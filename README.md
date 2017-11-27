@@ -1,17 +1,17 @@
 # SENG300GA3
 Github repo for SENG 300 group assignment 3
 
-##Instructions
+## Instructions
  
 The final iteration of your project (i.e., Group Assignment 3) aims to worry about design.  You will be in larger groups this time, but the task to be achieved will be larger and more complex.
 
-##History
+## History
 
 Version 1.  Initial requirements.
 
 Version 2. (a) Live demos details clarified.(b) Mr. Client removed the need for Bitcoin support (though your design must be extensible to Bitcoin support later!).  (c) Mr. Client also emphasized that the (un)lock mechanism needs to be supported to make the vending machine safe for a technician.
 
-##Requirements
+## Requirements
 
 Again, you will be working with the vending machine, but this time we care about your design. 
 
@@ -23,7 +23,7 @@ The **configuration panel** must be supported to permit a technician to program 
 [VERSION 2 ADDED:] The **locking/unlocking mechanism** needs to make the system safe for a technician.
 All previous requirements not contradicted by the above, are still in place.
 
-##Deliverables
+## Deliverables
 
 Group:
 
@@ -39,6 +39,6 @@ Teams
 
 Note that different teams are in place: the details are given in this spreadsheet.
 
-##Live Demos
+## Live Demos
 
 [VERSION 2 MODIFIED:] Each team will give a live demo of their tool to Dr. Walker in regular lecture time on Tuesday, 5 December.  You can revise your solution after this, up to the due date/time.
