@@ -13,28 +13,35 @@ Version 2. (a) Live demos details clarified.(b) Mr. Client removed the need for 
 
 ## Requirements
 
-Again, you will be working with the vending machine, but this time we care about your design. 
 
-Efficient performance is not very important here, but no one would want to wait 1 minute for their pop to be vended, for example.  However, your software design needs to be comprehensble and evolvable.
 Mr. Client has indicated that other configurations of the hardware will be forthcoming.  Your logic should avoid being too dependent on this specific hardware.
-More specifically, the machine must now **support payments through debit cards**, ~~[VERSION 2 REMOVED:] Bitcoin,~~ credit cards, and mixed modes of payment (part paid via coins, part via credit cards).  [VERSION 2 ADDED:] The design must accommodate easy extension to Bitcoin support.
+
+More specifically, the machine must now **support payments through debit cards**, 
+
+~~[VERSION 2 REMOVED:] Bitcoin,~~ credit cards, and mixed modes of payment (part paid via coins, part via credit cards).  [VERSION 2 ADDED:] The design must accommodate easy extension to Bitcoin support.
+
 A **graphical user interface is needed for the simulation**.  This must be implemented through the **Java Swing library**, part of the Java Standard Libraries.
+
 The **configuration panel** must be supported to permit a technician to program costs for the different pop kinds.
+
 [VERSION 2 ADDED:] The **locking/unlocking mechanism** needs to make the system safe for a technician.
+
 All previous requirements not contradicted by the above, are still in place.
 
 ## Deliverables
 
 Group:
 
-The source code for the logic supporting these requirements.
-A 2-page document arguing how the design goals have been met.
-A JUnit test suite demonstrating that your logic has no serious bugs.  This should involve both unit tests and system tests (i.e., when the logic is installed).
-[VERSION 2 ADDED:] Live demonstration: at least one team member must give a live demonstration in the regular lecture time as described below.
+1. The source code for the logic supporting these requirements.
+2. A 2-page document arguing how the design goals have been met.
+3. A JUnit test suite demonstrating that your logic has no serious bugs.  This should involve both unit tests and system tests (i.e., when the logic is installed).
+4. [VERSION 2 ADDED:] Live demonstration: at least one team member must give a live demonstration in the regular lecture time as described below.
 
 Individual:
 
 A self/peer evaluation.
+
+
 Teams
 
 Note that different teams are in place: the details are given in this spreadsheet.
