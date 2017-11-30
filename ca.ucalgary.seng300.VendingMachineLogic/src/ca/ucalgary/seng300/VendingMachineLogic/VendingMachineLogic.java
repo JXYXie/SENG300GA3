@@ -79,7 +79,7 @@ public class VendingMachineLogic {
 		vm.getOutOfOrderLight().register(vlistener);
 		vm.getExactChangeLight().register(vlistener);
 		vm.getDisplay().register(vlistener);
-		//TODO register lock listener
+		vm.getLock().register(vlistener);
 		
 		userCredit = 0;
 		displayCredit(); //Display looping message at beginning since credit is 0
