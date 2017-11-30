@@ -30,6 +30,7 @@ public class VendingMachineLogic {
 
 	private VendingMachine vm; //Vending machine object
 	private VendingListener vlistener; //listener objecy
+	private Lock lock;
 	
 	//fields for the message looping
 	private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -51,6 +52,7 @@ public class VendingMachineLogic {
 		this.vm = vm;
 		vlistener = new VendingListener(vm, this);
 		logger = new EventLogger();
+		lock = new Lock(); //Instantiates lock class
 		
 		//Iterate through all buttons
 		for (int i = 0; i < vm.getNumberOfSelectionButtons(); i++) {
@@ -77,6 +79,7 @@ public class VendingMachineLogic {
 		vm.getOutOfOrderLight().register(vlistener);
 		vm.getExactChangeLight().register(vlistener);
 		vm.getDisplay().register(vlistener);
+		//TODO register lock listener
 		
 		userCredit = 0;
 		displayCredit(); //Display looping message at beginning since credit is 0
@@ -190,6 +193,7 @@ public class VendingMachineLogic {
 		vm.enableSafety();
 		event = "Safety enabled!";
 		log(event);
+		lock.lock();//Locks the vending machine when safety is on
 	}
 	
 	/**
@@ -199,6 +203,7 @@ public class VendingMachineLogic {
 		vm.disableSafety();
 		event = "Safety disabled!";
 		log(event);
+		lock.unlock(); //Unlocks the vending machine
 	}
 	
 	/**

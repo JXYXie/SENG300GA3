@@ -14,7 +14,7 @@ import org.lsmr.vending.PopCan;
 import org.lsmr.vending.hardware.*;
 
 public class VendingListener implements CoinSlotListener, CoinRackListener, CoinReceptacleListener, CoinReturnListener,  
-PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightListener, DisplayListener{
+PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightListener, DisplayListener, LockListener {
 	
 	private VendingMachineLogic vml;
 	private VendingMachine vm;
@@ -304,4 +304,17 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 		event = newMessage;
 	}
 	/******************************End Display Listener********************************/
+
+	/*******************************Lock Listener***********************************/
+	@Override
+	public void locked(Lock lock) {
+		event = "Vending Machine locked";
+		vml.log(event);
+	}
+
+	@Override
+	public void unlocked(Lock lock) {
+		event = "Vending Machine unlocked";
+		vml.log(event);
+	}
 }
