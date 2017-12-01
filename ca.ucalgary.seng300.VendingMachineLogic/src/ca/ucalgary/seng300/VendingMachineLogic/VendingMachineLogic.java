@@ -36,7 +36,10 @@ public class VendingMachineLogic {
 	private ScheduledFuture<?> beeperHandle;
 	private EventLogger logger;
 	
-	private List<PushButton> buttonList = new ArrayList<>();
+	private List<PushButton> buttonList = new ArrayList<>(); //List of buttons
+	
+	private List<Integer> costs = new ArrayList<Integer>(); //List of pop costs
+	private List<String> popNames = new ArrayList<String>(); //List of pop names
 	private int userCredit;
 	private String currency = "CAD"; //Current currency format, can be changed i.e. USD
 	private String event; //This is used to pass to display and log file when necessary
@@ -243,5 +246,24 @@ public class VendingMachineLogic {
 	public List<PushButton> getButtonList() {
 		return buttonList;
 	}
-
+	
+	/**
+	 * @param newCosts
+	 */
+	public void setCosts(List<Integer> newCosts) {
+		costs = newCosts;
+	}
+	
+	public List<Integer> getCosts() {
+		return costs;
+	}
+	
+	public void setPopNames(List<String> newPopNames) {
+		popNames = newPopNames;
+	}
+	
+	public List<String> getPopNames() {
+		return popNames;
+	}
+	
 }
