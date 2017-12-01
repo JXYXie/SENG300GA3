@@ -42,9 +42,7 @@ public class MyFrame extends JFrame
     
     EventListener aListener = new EventListener(aFrame,textField);	
 	
-	//i didnt feel like making an array of buttons so someone should do that
-	//obviously you can implement this to add however many buttons, i added 9 for testing
-	//goodluck preston
+	//buttons corresponding to pop cans
 	int i;
 	for(i = 0;i < 6; i++){	
 	button = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
@@ -60,7 +58,7 @@ public class MyFrame extends JFrame
 	button.setContentAreaFilled(false);
 	aFrame.getContentPane().add(button);}
 
-	//dispensed pop can
+	//dispensed pop can(just a sideways can, dunno how to use it yet)
 	button = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("vendedCan.gif"))));
 	button.setActionCommand("vendedCan");
 	button.addActionListener(aListener);
@@ -71,7 +69,7 @@ public class MyFrame extends JFrame
 	button.setVisible(false);
 	aFrame.getContentPane().add(button);
 	
-	
+	//change that can be enters, along with an invalid coin(washer)
 	String imageStrings[] = {"toonie", "loonie", "quarter", "dime", "nickel", "washer"};
 	int index = 0;
 	for (String s: imageStrings){ 	
