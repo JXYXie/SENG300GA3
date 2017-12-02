@@ -46,6 +46,8 @@ public class VMLogicTester {
 			costs.add(250); //everything costs 2.50
 		}
 		
+		vml.setPopNames(popNames);
+		vml.setCosts(costs);
 		vm.configure(popNames, costs);
 		vm.loadPopCans(5, 5, 5, 5, 5, 5); //Starts with 5 of each kind of pop
 		

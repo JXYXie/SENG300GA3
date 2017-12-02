@@ -30,6 +30,7 @@ public class VendingMachineLogic {
 
 	private VendingMachine vm; //Vending machine object
 	private VendingListener vlistener; //listener objecy
+	private ConfigPanelLogic cpl;
 	
 	//fields for the message looping
 	private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -205,6 +206,13 @@ public class VendingMachineLogic {
 		event = "Safety disabled!";
 		log(event);
 		vm.getLock().unlock(); //Unlocks the vending machine
+	}
+	
+	/**
+	 * If the configuration panel is accessed
+	 */
+	public void configAccess() {
+		cpl.initialize(); //TODO just this line for now, (will add more if needed once GUI is implemented?)
 	}
 	
 	/**
