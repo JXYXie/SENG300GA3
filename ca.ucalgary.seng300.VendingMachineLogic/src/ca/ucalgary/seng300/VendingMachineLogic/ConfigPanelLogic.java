@@ -6,6 +6,8 @@
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.util.List;
+import java.util.Scanner;
+
 import org.lsmr.vending.hardware.VendingMachine;
 
 public class ConfigPanelLogic {
@@ -39,10 +41,16 @@ public class ConfigPanelLogic {
 	public void enterButtonPressed() {
 		if (indexMode) { //If what the technician entered was the pop rack index
 			if (input != "") { //and input is not empty
-				indexToModify = Integer.parseInt(input); //Gets the index to modify from the input
-				indexMode = false; //No longer asking for pop rack index
-				vm.getConfigurationPanel().getDisplay().display("New cost: "); //Now prompt for cost
-				input = ""; //resets the input
+				Scanner scan = new Scanner(input);
+				if(!scan.hasNextInt()){//If string does not contain an int initialize again
+					initialize();
+				}
+				else{
+					indexToModify = Integer.parseInt(input); //Gets the index to modify from the input
+					indexMode = false; //No longer asking for pop rack index
+					vm.getConfigurationPanel().getDisplay().display("New cost: "); //Now prompt for cost
+					input = ""; //resets the input
+				}	
 			} else {
 				initialize(); //retries with prompt
 			}
