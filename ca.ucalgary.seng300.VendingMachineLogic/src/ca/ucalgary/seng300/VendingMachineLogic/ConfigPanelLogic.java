@@ -17,6 +17,7 @@ public class ConfigPanelLogic {
 	
 	private boolean indexMode;
 	private String input;
+	private String event;
 	
 	private int indexToModify;
 	private int costToModify;
@@ -32,7 +33,9 @@ public class ConfigPanelLogic {
 	public void initialize() {
 		indexMode = true; //Pop kind (index) is always picked before the cost
 		input = ""; //Reset the input
-		vm.getConfigurationPanel().getDisplay().display("Pop index to modify: "); //Automatically starts off asking for which pop index to modify
+		
+		event = "Pop index to modify: "; //Automatically starts off asking for which pop index to modify
+		display(event); //displays the prompt
 	}
 	
 	/**
@@ -49,8 +52,10 @@ public class ConfigPanelLogic {
 				else{
 					indexToModify = Integer.parseInt(input); //Gets the index to modify from the input
 					indexMode = false; //No longer asking for pop rack index
-					vm.getConfigurationPanel().getDisplay().display("New cost: "); //Now prompt for cost
 					input = ""; //resets the input
+					
+					event = "New cost: "; //Now prompt for cost
+					display(event);
 				}	
 			} else {
 				initialize(); //retries with prompt
@@ -75,10 +80,12 @@ public class ConfigPanelLogic {
 		vm.getConfigurationPanel().getButton(btnIndex).press(); //Make sure the button is actually pressed
 		if (indexMode) {
 			input += btnIndex; //Concatenates it to input
-			vm.getConfigurationPanel().getDisplay().display("Pop index to modify: " + input);
+			event = "Pop index to modify: " + input;
+			display(event);
 		} else {
 			input += btnIndex; //Concatenates it to input
-			vm.getConfigurationPanel().getDisplay().display("New cost: " + input);
+			event = "New cost: " + input;
+			display(event);
 		}
 	}
 	
@@ -91,6 +98,24 @@ public class ConfigPanelLogic {
 		costs.set(index, newCost); //change the cost of the pop that was edited
 		vml.setCosts(costs); //updates the new costs arrayList
 		vm.configure(vml.getPopNames(), costs); //and configure the machine with the new costs
+	}
+	
+	/**
+	 * Access the internal display panel of the Config panel
+	 * Logs display messages
+	 * @param event that is displayed and logged
+	 */
+	public void display(String msg) {
+		vm.getConfigurationPanel().getDisplay().display(msg);
+		vml.log("CONFIGPANEL DISPLAY: " + msg);
+	}
+	
+	/**
+	 * Gets the current message that is on the internal display
+	 * @return the event message
+	 */
+	public String getDisplayMessage() {
+		return event;
 	}
 	
 }
