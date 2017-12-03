@@ -38,7 +38,8 @@ public class ConfigPanelLogic {
 	/**
 	 * When the enter button is pressed this method is called
 	 */
-	public void enterButtonPressed() {
+	public void pressEnterButton() {
+		vm.getConfigurationPanel().getEnterButton().press(); //Make sure the button is actually pressed
 		if (indexMode) { //If what the technician entered was the pop rack index
 			if (input != "") { //and input is not empty
 				Scanner scan = new Scanner(input);
@@ -70,7 +71,8 @@ public class ConfigPanelLogic {
 	 * Gets the button index and updates it to the input
 	 * @param btnIndex of the button that was pressed
 	 */
-	public void buttonPressed(int btnIndex) {
+	public void pressButton(int btnIndex) {
+		vm.getConfigurationPanel().getButton(btnIndex).press(); //Make sure the button is actually pressed
 		if (indexMode) {
 			input += btnIndex; //Concatenates it to input
 			vm.getConfigurationPanel().getDisplay().display("Pop index to modify: " + input);
