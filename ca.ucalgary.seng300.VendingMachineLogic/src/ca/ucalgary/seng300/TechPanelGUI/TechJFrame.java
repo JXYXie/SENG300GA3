@@ -256,6 +256,9 @@ public class TechJFrame extends JFrame {
 		JButton btnEnter = new JButton("ENTER");
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressEnterButton();
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				int newValue = Integer.parseInt(kpPrice);
 				
 				if((newValue % 10 == 0) | (newValue % 5 == 0))
@@ -275,7 +278,7 @@ public class TechJFrame extends JFrame {
 					textView = "";
 					
 				}
-				
+				*/
 			}
 		});
 		
@@ -285,10 +288,14 @@ public class TechJFrame extends JFrame {
 		JButton btnReset = new JButton("RESET");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.initialize();
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice = "";
 				popIndex = -1;
 				textView = "";
 				txtpnPleaseSelectPop.setText("Please select pop product to change price");
+				*/
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -408,6 +415,8 @@ public class TechJFrame extends JFrame {
 	VendingMachine vm = new VendingMachine(coinKinds, btnCount, coinRackCapacity, popRackCapacity, receptacleCapacity, deliveryChuteCapacity, coinReturnCapacity);
 	VendingMachineLogic vml = new VendingMachineLogic(vm);
 	cpl = new ConfigPanelLogic(vm, vml);
+	
+	cpl.initialize();
 	
 	
 	List<String> popNames = new ArrayList<String>(); //List of pop names
