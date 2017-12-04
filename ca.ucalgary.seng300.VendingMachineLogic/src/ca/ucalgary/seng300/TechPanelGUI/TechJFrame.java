@@ -81,7 +81,7 @@ public class TechJFrame extends JFrame {
 		selectpop_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 		
-				textView = vml.getPopNames().get(0) + " :";
+				textView = vml.getPopNames().get(0) + " :" +vml.getCosts().get(0);
 				popIndex = 0;
 				txtpnPleaseSelectPop.setText(textView);
 			}
@@ -90,7 +90,7 @@ public class TechJFrame extends JFrame {
 		JButton selectpop_2 = new JButton("Pop 2");
 		selectpop_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textView = vml.getPopNames().get(1) + " :";
+				textView = vml.getPopNames().get(1) + " :" +vml.getCosts().get(1);
 				popIndex = 1;
 				txtpnPleaseSelectPop.setText(textView);
 			}
@@ -99,7 +99,7 @@ public class TechJFrame extends JFrame {
 		JButton selectpop_3 = new JButton("Pop 3");
 		selectpop_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textView = vml.getPopNames().get(2) + " :";
+				textView = vml.getPopNames().get(2) + " :"+vml.getCosts().get(2);
 				popIndex = 2;
 				txtpnPleaseSelectPop.setText(textView);;
 			}
@@ -108,7 +108,7 @@ public class TechJFrame extends JFrame {
 		JButton selectpop_4 = new JButton("Pop 4");
 		selectpop_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textView = vml.getPopNames().get(3) + " :";
+				textView = vml.getPopNames().get(3) + " :"+vml.getCosts().get(3);
 				popIndex = 3;
 				txtpnPleaseSelectPop.setText(textView);
 			}
@@ -117,7 +117,7 @@ public class TechJFrame extends JFrame {
 		JButton selectpop_5 = new JButton("Pop 5");
 		selectpop_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textView = vml.getPopNames().get(4) + " :";
+				textView = vml.getPopNames().get(4) + " :" +vml.getCosts().get(4);
 				popIndex = 4;
 				txtpnPleaseSelectPop.setText(textView);
 			}
@@ -126,7 +126,7 @@ public class TechJFrame extends JFrame {
 		JButton selectpop_6 = new JButton("Pop 6");
 		selectpop_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textView = vml.getPopNames().get(5) + " :";
+				textView = vml.getPopNames().get(5) + " :"+vml.getCosts().get(5);
 				popIndex = 5;
 				txtpnPleaseSelectPop.setText(textView);
 			}
