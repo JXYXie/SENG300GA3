@@ -155,22 +155,19 @@ public class TechJFrame extends JFrame {
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(keypad_6))
 							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-									.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(keypad_7)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(keypad_8))
-									.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(keypad_9)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnEnter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+								.addComponent(keypad_7)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(keypad_8)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(keypad_9))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(keypad_0, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGap(2))))
-					.addContainerGap(131, Short.MAX_VALUE))
-		);
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(keypad_0, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnEnter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGap(2))))));
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -202,14 +199,14 @@ public class TechJFrame extends JFrame {
 		gl_contentPane.linkSize(SwingConstants.HORIZONTAL, new Component[] {keypad_9, keypad_8, keypad_7, keypad_6, keypad_5, keypad_4, keypad_3, keypad_2, keypad_1, keypad_0, btnReset, btnEnter});
 		contentPane.setLayout(gl_contentPane);
 	}
-	
+
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
+
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
-	
 }
