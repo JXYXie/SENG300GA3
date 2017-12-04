@@ -82,6 +82,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void coinAdded(CoinRack rack, Coin coin) {
 		event = coin.getValue() + " cent coin has been added to its rack";
 		vml.log(event);
+		vml.notifyCoinsGUI(vm);
 	}
 
 	/**
@@ -91,6 +92,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void coinRemoved(CoinRack rack, Coin coin) {
 		event = coin.getValue() + " coin has been removed from its rack";
 		vml.log(event);
+		vml.notifyCoinsGUI(vm);
 	}
 
 	@Override
@@ -208,6 +210,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void popCanRemoved(PopCanRack popCanRack, PopCan popCan) {
 		event = "Removed a " + popCan.getName() + " from its rack";
 		vml.log(event);
+		vml.notifyVendedGUI(popCan.getName());
 	}
 
 	@Override
