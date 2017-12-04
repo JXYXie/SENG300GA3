@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import org.lsmr.vending.Coin;
 import org.lsmr.vending.hardware.VendingMachine;
 
+import ca.ucalgary.seng300.VendingMachineLogic.ConfigPanelLogic;
 import ca.ucalgary.seng300.VendingMachineLogic.VendingMachineLogic;
 
 import java.awt.GridLayout;
@@ -37,7 +38,10 @@ public class TechJFrame extends JFrame {
 	private int popIndex = -1;
 	private String popName = "";
 	private VendingMachineLogic vml;
+	private static ConfigPanelLogic cpl;
 	
+
+
 
 	/**
 	 * Launch the application.
@@ -131,72 +135,108 @@ public class TechJFrame extends JFrame {
 		JButton keypad_9 = new JButton("9");
 		keypad_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(9);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "9";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton keypad_8 = new JButton("8");
 		keypad_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(8);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "8";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton keypad_7 = new JButton("7");
 		keypad_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(7);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "7";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton keypad_6 = new JButton("6");
 		keypad_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(6);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "6";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton keypad_4 = new JButton("5");
 		keypad_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(5);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "5";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton button_5 = new JButton("4");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(4);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "4";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton keypad_3 = new JButton("3");
 		keypad_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(3);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "3";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton keypad_2 = new JButton("2");
 		keypad_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(2);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "2";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
 		JButton button_8 = new JButton("1");
 		button_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cpl.pressButton(1);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "1";
 				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 				//txtpnPleaseSelectPop.
 			}
 		});
@@ -204,7 +244,12 @@ public class TechJFrame extends JFrame {
 		JButton keypad_1 = new JButton("0");
 		keypad_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				cpl.pressButton(0);
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				/*
 				kpPrice += "0";
+				txtpnPleaseSelectPop.setText(textView + " " + kpPrice);
+				*/
 			}
 		});
 		
@@ -235,7 +280,7 @@ public class TechJFrame extends JFrame {
 		});
 		
 		
-		txtpnPleaseSelectPop.setText("Please select pop product to change price");
+		txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
 		
 		JButton btnReset = new JButton("RESET");
 		btnReset.addActionListener(new ActionListener() {
@@ -362,6 +407,8 @@ public class TechJFrame extends JFrame {
 	
 	VendingMachine vm = new VendingMachine(coinKinds, btnCount, coinRackCapacity, popRackCapacity, receptacleCapacity, deliveryChuteCapacity, coinReturnCapacity);
 	VendingMachineLogic vml = new VendingMachineLogic(vm);
+	cpl = new ConfigPanelLogic(vm, vml);
+	
 	
 	List<String> popNames = new ArrayList<String>(); //List of pop names
 	
