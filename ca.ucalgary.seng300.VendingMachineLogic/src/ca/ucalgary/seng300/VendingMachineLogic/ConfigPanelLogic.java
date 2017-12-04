@@ -29,13 +29,16 @@ public class ConfigPanelLogic {
 		this.vml = vml;
 	}
 	
+	/**
+	 * When the technician panel is first accessed/opened
+	 */
 	public void initialize() {
 		techFrame = new TechJFrame(vm, vml);
 		techFrame.setVisible(true);
 	}
 	
 	/**
-	 * When the technician panel is first accessed/opened
+	 * Resets the display of the config panel and clears the current input
 	 */
 	public void reset() {
 		indexMode = true; //Pop kind (index) is always picked before the cost

@@ -127,9 +127,6 @@ public class TechJFrame extends JFrame {
 			}
 		});
 		
-		
-		txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
-		
 		JButton btnReset = new JButton("RESET");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -146,25 +143,25 @@ public class TechJFrame extends JFrame {
 						.addComponent(txtpnPleaseSelectPop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(keypad_6)
+								.addComponent(keypad_1)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(keypad_2)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(keypad_3))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(keypad_4)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(keypad_5)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_4))
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(keypad_9)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_8)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_7))
+								.addComponent(keypad_6))
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 									.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(keypad_3)
+										.addComponent(keypad_7)
 										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(keypad_2))
+										.addComponent(keypad_8))
 									.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(keypad_1)
+										.addComponent(keypad_9)
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(btnEnter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 								.addPreferredGap(ComponentPlacement.RELATED)
@@ -202,7 +199,7 @@ public class TechJFrame extends JFrame {
 						.addComponent(btnReset))
 					.addContainerGap(111, Short.MAX_VALUE))
 		);
-		gl_contentPane.linkSize(SwingConstants.HORIZONTAL, new Component[] {keypad_9, keypad_8, keypad_7, keypad_6, keypad_5, keypad_4, keypad_3, keypad_2, keypad_1, keypad_0, btnEnter});
+		gl_contentPane.linkSize(SwingConstants.HORIZONTAL, new Component[] {keypad_9, keypad_8, keypad_7, keypad_6, keypad_5, keypad_4, keypad_3, keypad_2, keypad_1, keypad_0, btnReset, btnEnter});
 		contentPane.setLayout(gl_contentPane);
 	}
 	
