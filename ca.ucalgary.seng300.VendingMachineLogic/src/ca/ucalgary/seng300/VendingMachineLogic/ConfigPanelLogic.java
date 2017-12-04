@@ -15,6 +15,8 @@ public class ConfigPanelLogic {
 	private VendingMachineLogic vml;
 	private VendingMachine vm;
 	
+	private TechJFrame techFrame;
+	
 	private boolean indexMode;
 	private String input;
 	private String event;
@@ -25,6 +27,7 @@ public class ConfigPanelLogic {
 	public ConfigPanelLogic(VendingMachine vm, VendingMachineLogic vml) {
 		this.vm = vm;
 		this.vml = vml;
+		techFrame = new TechJFrame(vm, vml);
 	}
 	
 	/**
