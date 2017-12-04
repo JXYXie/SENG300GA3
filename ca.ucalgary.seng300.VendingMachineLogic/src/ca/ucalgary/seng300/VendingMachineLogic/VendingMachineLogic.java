@@ -1,5 +1,5 @@
 /**********************************************************
- * SENG 300 Group Assignment 2
+ * SENG 300 Group Assignment 3
  * Main logic class
  * @author Xin Yan (Jack) Xie
  * @author Jacky Wu
@@ -8,6 +8,8 @@
  * @author Siddharth Kataria
  * @author Steffen Gerdes
  * @author Sheldon Birch-Lucas
+ * @author Matthew Wojcik
+ * @author Preston Tran
  * This class handles all the logic operations that occur in a vending machine,
  * specifically, this class handles any transactions and vending operations: 
  * i.e. coins are inserted, buttons get pressed, pop gets vended, change is returned, etc
@@ -290,20 +292,31 @@ public class VendingMachineLogic {
 	}
 	
 	/**
+	 * Updates the new costs arrayList
 	 * @param newCosts
 	 */
 	public void setCosts(List<Integer> newCosts) {
 		costs = newCosts;
 	}
 	
+	/**
+	 * @return the current arrayList of pop costs
+	 */
 	public List<Integer> getCosts() {
 		return costs;
 	}
 	
+	/**
+	 * Sets new pop names
+	 * @param newPopNames
+	 */
 	public void setPopNames(List<String> newPopNames) {
 		popNames = newPopNames;
 	}
 	
+	/**
+	 * @return the current arrayList of pop names
+	 */
 	public List<String> getPopNames() {
 		return popNames;
 	}

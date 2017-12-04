@@ -2,6 +2,7 @@
  * Configuration panel logic class
  * Handles the logic to allow the access and change of vending item costs
  *through button presses
+ * @author Xin Yan (Jack) Xie
  *******************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
@@ -17,13 +18,18 @@ public class ConfigPanelLogic {
 	
 	private TechJFrame techFrame;
 	
-	private boolean indexMode;
-	private String input;
-	private String event;
+	private boolean indexMode; //whether the technician is currently accessing the pop index as opposed to pop cost
+	private String input; //the input from the keypad
+	private String event; //the internal display message
 	
 	private int indexToModify;
 	private int costToModify;
 	
+	/**
+	 * Constructor
+	 * @param vm VendingMachine object
+	 * @param vml VendingMachineLogic object
+	 */
 	public ConfigPanelLogic(VendingMachine vm, VendingMachineLogic vml) {
 		this.vm = vm;
 		this.vml = vml;

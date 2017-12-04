@@ -1,3 +1,11 @@
+/*****************************************************
+ * Custom JFrame class
+ * Currently has a JPanel that acts as the internal display
+ *and 12 buttons (num 0 to 9, enter button and reset button)
+ * @author Sheldon Birch-Lucas
+ * @author Jacky Wu
+ * @author Xin Yan (Jack) Xie
+ ****************************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.awt.Component;
@@ -24,7 +32,7 @@ public class TechJFrame extends JFrame {
 	private ConfigPanelLogic cpl;
 
 	/**
-	 * Create the frame.
+	 * Creates the frame.
 	 */
 	public TechJFrame(VendingMachine vm, VendingMachineLogic vml) {
 		
@@ -36,7 +44,7 @@ public class TechJFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JTextPane txtpnPleaseSelectPop = new JTextPane();
+		JTextPane txtpnPleaseSelectPop = new JTextPane(); //Instantiates the textpane
 		txtpnPleaseSelectPop.setEditable(false);
 		
 		JButton keypad_9 = new JButton("9");
