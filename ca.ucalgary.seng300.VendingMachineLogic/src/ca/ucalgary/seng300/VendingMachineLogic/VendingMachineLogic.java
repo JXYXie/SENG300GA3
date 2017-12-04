@@ -45,6 +45,14 @@ public class VendingMachineLogic {
 	private String currency = "CAD"; //Current currency format, can be changed i.e. USD
 	private String event; //This is used to pass to display and log file when necessary
 
+	// Makes an array list of GUIListeners to communicate with the GUI
+	private ArrayList<GUIListener> listeners = new ArrayList<>();
+
+	// Registers listeners to the array
+    public final void registerGUI(GUIListener listener) {
+    	listeners.add(listener);
+    }
+    
 	/********************
 	 * Constructor
 	 * instantiates and initializes all the relevant hardware
@@ -143,11 +151,36 @@ public class VendingMachineLogic {
 		}
 		
 	}
+	/*********************************** Machine GUI ********************************************/
+	/**
+	 * Method to update all listeners attached to communicate with the GUI
+	 * and pass the string to the display of the GUI
+	 * @param message is the string to be passed to the GUI display
+	 */
+	public void notifyMachineGUI(String message) {
+		for(GUIListener listener : listeners) {
+			listener.updateDisplay(message);
+		}
+	}
+	
+	// Method that will be used to show what pop was vended
+	public void notifyVendedGUI(String pop) {
+		for(GUIListener listener : listeners) {
+			listener.popVended(pop);
+		}
+	}
+	
+	public void notifyCoinsGUI(VendingMachine vm) {
+		for(GUIListener listener : listeners) {
+			listener.updateCoins(vm);
+		}
+	}
 	
 	/******************************** Display Functions ********************************************/
 	public void display(String event) {
 		if (event != null) {
 			vm.getDisplay().display(event);
+			notifyMachineGUI(event);
 			log("DISPLAY: " + event);
 		}
 	}
