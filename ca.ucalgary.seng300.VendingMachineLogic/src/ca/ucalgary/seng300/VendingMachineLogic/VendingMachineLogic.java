@@ -29,7 +29,7 @@ import org.lsmr.vending.hardware.*;
 public class VendingMachineLogic {
 
 	private VendingMachine vm; //Vending machine object
-	private VendingListener vlistener; //listener objecy
+	private VendingListener vlistener; //listener object
 	private ConfigPanelLogic cpl;
 	
 	//fields for the message looping
