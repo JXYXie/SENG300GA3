@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -70,6 +71,11 @@ public class VMLogicTester {
 		}
 	}
 	
+	@After
+	public void tearDown() throws InterruptedException {
+	    while (true) { Thread.sleep(2000); }
+	}
+	
 	//Purchase normally
 	//This test makes sure that valid coins are accepted and added to the vending machine's credit, a pop
 	//is vended when its button is pushed and change is returned to the user 
@@ -85,8 +91,8 @@ public class VMLogicTester {
 		
 		assertEquals(vm.getPopCanRack(1).size(), 4);
 		assertTrue(vm.getCoinReturn().size() == 3); //should be 3 coins(loonie and 3 quarters)
-		cpl.setUp();
 		cpl.initialize();
+		cpl.reset();
 	}
 	
 	//Invalid coin insertion

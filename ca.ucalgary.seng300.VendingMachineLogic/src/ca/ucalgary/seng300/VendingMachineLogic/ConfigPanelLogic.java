@@ -29,7 +29,7 @@ public class ConfigPanelLogic {
 		this.vml = vml;
 	}
 	
-	public void setUp() {
+	public void initialize() {
 		techFrame = new TechJFrame(vm, vml);
 		techFrame.setVisible(true);
 	}
@@ -37,7 +37,7 @@ public class ConfigPanelLogic {
 	/**
 	 * When the technician panel is first accessed/opened
 	 */
-	public void initialize() {
+	public void reset() {
 		indexMode = true; //Pop kind (index) is always picked before the cost
 		input = ""; //Reset the input
 		
@@ -53,8 +53,8 @@ public class ConfigPanelLogic {
 		if (indexMode) { //If what the technician entered was the pop rack index
 			if (input != "") { //and input is not empty
 				Scanner scan = new Scanner(input);
-				if(!scan.hasNextInt()){//If string does not contain an int initialize again
-					initialize();
+				if(!scan.hasNextInt()){//If string does not contain an int reset
+					reset();
 				}
 				else{
 					indexToModify = Integer.parseInt(input); //Gets the index to modify from the input
@@ -65,7 +65,7 @@ public class ConfigPanelLogic {
 					display(event);
 				}	
 			} else {
-				initialize(); //retries with prompt
+				reset(); //retries with prompt
 			}
 		} else { //If the technician entered in the new cost
 			if (input != "") { //and the input is not empty
@@ -74,7 +74,7 @@ public class ConfigPanelLogic {
 				costToModify = 100; //the new cost will default to 100 cents
 			}
 			changeCost(indexToModify, costToModify); //Updates the corresponding pop rack with the new cost
-			initialize(); //Now ask for pop index again
+			reset(); //Now ask for pop index again
 		}
 	}
 	

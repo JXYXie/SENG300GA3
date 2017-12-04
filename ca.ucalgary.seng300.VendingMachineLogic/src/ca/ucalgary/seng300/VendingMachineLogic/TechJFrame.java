@@ -133,7 +133,7 @@ public class TechJFrame extends JFrame {
 		JButton btnReset = new JButton("RESET");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cpl.initialize();
+				cpl.reset();
 				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
 			}
 		});
