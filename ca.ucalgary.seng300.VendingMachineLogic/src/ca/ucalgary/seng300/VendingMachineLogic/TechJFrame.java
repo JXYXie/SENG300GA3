@@ -21,23 +21,14 @@ import org.lsmr.vending.hardware.VendingMachine;
 public class TechJFrame extends JFrame {
 
 	private JPanel contentPane;
-	
-	private static ConfigPanelLogic cpl;
+	private ConfigPanelLogic cpl;
 
 	/**
 	 * Create the frame.
 	 */
 	public TechJFrame(VendingMachine vm, VendingMachineLogic vml) {
 		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		cpl = vml.getConfigPanelLogic();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 640, 480);

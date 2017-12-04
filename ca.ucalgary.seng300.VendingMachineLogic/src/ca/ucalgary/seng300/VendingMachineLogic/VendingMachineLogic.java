@@ -54,6 +54,7 @@ public class VendingMachineLogic {
 		
 		this.vm = vm;
 		vlistener = new VendingListener(vm, this);
+		cpl = new ConfigPanelLogic(vm, this);
 		logger = new EventLogger();
 		
 		//Iterate through all buttons
@@ -211,8 +212,8 @@ public class VendingMachineLogic {
 	/**
 	 * If the configuration panel is accessed
 	 */
-	public void configAccess() {
-		cpl.initialize(); //TODO just this line for now, (will add more if needed once GUI is implemented?)
+	public ConfigPanelLogic getConfigPanelLogic() {
+		return cpl;
 	}
 	
 	/**

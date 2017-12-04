@@ -27,7 +27,11 @@ public class ConfigPanelLogic {
 	public ConfigPanelLogic(VendingMachine vm, VendingMachineLogic vml) {
 		this.vm = vm;
 		this.vml = vml;
+	}
+	
+	public void setUp() {
 		techFrame = new TechJFrame(vm, vml);
+		techFrame.setVisible(true);
 	}
 	
 	/**

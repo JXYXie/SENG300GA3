@@ -17,6 +17,7 @@ import org.junit.Test;
 public class VMLogicTester {
 	private VendingMachine vm;
 	private VendingMachineLogic vml;
+	private ConfigPanelLogic cpl;
 	@Before
 	public void setUp() throws Exception {
 		
@@ -30,6 +31,7 @@ public class VMLogicTester {
 		
 		vm = new VendingMachine(coinKinds, btnCount, coinRackCapacity, popRackCapacity, receptacleCapacity, deliveryChuteCapacity, coinReturnCapacity);
 		vml = new VendingMachineLogic(vm);
+		cpl = vml.getConfigPanelLogic();
 		
 		List<String> popNames = new ArrayList<String>(); //List of pop names
 		
@@ -83,6 +85,8 @@ public class VMLogicTester {
 		
 		assertEquals(vm.getPopCanRack(1).size(), 4);
 		assertTrue(vm.getCoinReturn().size() == 3); //should be 3 coins(loonie and 3 quarters)
+		cpl.setUp();
+		cpl.initialize();
 	}
 	
 	//Invalid coin insertion
