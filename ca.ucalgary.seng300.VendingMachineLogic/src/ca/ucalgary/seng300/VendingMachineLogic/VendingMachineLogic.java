@@ -165,16 +165,48 @@ public class VendingMachineLogic {
 		}
 	}
 	
-	// Method that will be used to show what pop was vended
+	/**
+	 * A method that updates all listeners attached to communicate with the GUI
+	 * and pass the name of the pop that was vended
+	 * @param pop the name of the pop that was vended
+	 */
 	public void notifyVendedGUI(String pop) {
 		for(GUIListener listener : listeners) {
 			listener.popVended(pop);
 		}
 	}
 	
+	/**
+	 * A method that updates all listeners attached to communicate with the GUI
+	 * and update the coins in the vending machine after a transaction has successfully
+	 * happened
+	 * @param vm is the vending machine to get the counts of the coins from
+	 */
 	public void notifyCoinsGUI(VendingMachine vm) {
 		for(GUIListener listener : listeners) {
 			listener.updateCoins(vm);
+		}
+	}
+	
+	/**
+	 * A method that updates all listeners attached to communicate with the GUI
+	 * and update the exact change light in the vending machine
+	 * @param set is a boolean value to set the light to on or off
+	 */
+	public void updateExactChangeLight(boolean set) {
+		for(GUIListener listener : listeners) {
+			listener.updateExactChangeLight(set);
+		}
+	}
+	
+	/**
+	 * A method that updates all listeners attached to communicate with the GUI
+	 * and update the out of order light in the vending machine
+	 * @param set is a boolean value to set the light to on or off
+	 */
+	public void updateOutOfOrderLight(boolean set) {
+		for(GUIListener listener : listeners) {
+			listener.updateOutOfOrderLight(set);
 		}
 	}
 	

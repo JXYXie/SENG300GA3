@@ -14,9 +14,26 @@ public interface GUIListener {
 	public void updateDisplay(String message);
 	
 	/**
-	 * Method that will show what pop was vended
+	 * A method to update the GUI to show what pop was vended
+	 * @param name is the name of the pop that was vended
 	 */
 	public void popVended(String name);
 	
+	/**
+	 * A method to update the coins in the GUI
+	 * @param vm is the vending machine to get the coins from
+	 */
 	public void updateCoins(VendingMachine vm);
+	
+	/**
+	 * A method to update the status of the exact change light in the GUI
+	 * @param set is the boolean value to set the visibility of the light in the GUI
+	 */
+	public void updateExactChangeLight(boolean set);
+	
+	/**
+	 * A method to update the status of the out of order light in the GUI
+	 * @param set is the boolean value to set the visibility of the light in the GUI
+	 */
+	public void updateOutOfOrderLight(boolean set);
 }
