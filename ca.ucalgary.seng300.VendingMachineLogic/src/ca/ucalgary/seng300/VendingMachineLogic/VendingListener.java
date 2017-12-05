@@ -285,9 +285,11 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void activated(IndicatorLight light) {
 		if (light == vm.getExactChangeLight()) {
 			event = "Exact change only light turned on";
+			vml.updateExactChangeLight(true);
 		}
 		else if (light == vm.getOutOfOrderLight()) {
 			event = "Out of order light turned on";
+			vml.updateOutOfOrderLight(true);
 		}
 		vml.log(event);
 	}
@@ -296,9 +298,11 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void deactivated(IndicatorLight light) {
 		if (light == vm.getExactChangeLight()) {
 			event = "Exact change only light turned off";
+			vml.updateExactChangeLight(false);
 		}
 		else if (light == vm.getOutOfOrderLight()) {
 			event = "Out of order light turned off";
+			vml.updateOutOfOrderLight(false);
 		}
 		vml.log(event);		
 	}

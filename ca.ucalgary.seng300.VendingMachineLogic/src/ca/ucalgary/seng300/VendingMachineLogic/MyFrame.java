@@ -19,14 +19,11 @@ public class MyFrame extends JFrame
     //attributes. ie) buttons,labels,text spaces 
     private JTextField textField, vendedPop;
     private MyFrame aFrame;
-    private JLabel picture1;
+    private JLabel picture1, exactChangeLight, outOfOrderLight;
 
     private JLabel label1;
-    private HashMap<Integer, JButton> maps = new HashMap<Integer, JButton>();
     private JButton button, vendedButton;
     private JTextField[] coinCount;
-    //private JButton[] vended;
-    private int buttonPressed = 1;
 
     Dimension size;
     
@@ -52,6 +49,7 @@ public class MyFrame extends JFrame
     textField.setText("Display");
     aFrame.getContentPane().add(textField);
     
+    // A text field to represent what pop was vended based on the button pressed
 	vendedPop = new JTextField(10);
 	size = vendedPop.getPreferredSize();
 	vendedPop.setBounds(250, 690, size.width, size.height);
@@ -60,6 +58,7 @@ public class MyFrame extends JFrame
     
     EventListener aListener = new EventListener(aFrame,textField, vendedPop, vm);
     
+    // A button to clear the coinReturn chute and also reset the display for the next pop
     vendedButton = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
     vendedButton.setActionCommand("Vended");
     vendedButton.addActionListener(aListener);
@@ -88,11 +87,7 @@ public class MyFrame extends JFrame
 	//change that can be entered, along with an invalid coin(washer)
 	coinCount = new JTextField[5];
 	String imageStrings[] = {"toonie", "loonie", "quarter", "dime", "nickel", "washer"};
-//	int[] coinValues = {200, 100, 25, 10, 5};
 	int[] coinAmount = new int[5];
-//	for(int j = 0; j < 5; j++) {
-//		coinAmount[j] = vm.getCoinRackForCoinKind(coinValues[j]).size();
-//	}
 	int index = 0;
 	for (String s: imageStrings){ 	
 		button = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream(s + ".gif"))));
@@ -103,6 +98,8 @@ public class MyFrame extends JFrame
 		button.setBorder(BorderFactory.createEmptyBorder());
 		button.setContentAreaFilled(false);
 		aFrame.getContentPane().add(button);
+		// Placing a text field beside each coin value to show how much of each denomination is
+		// currently in the machine
 		if (index < 5){
 			coinCount[index] = new JTextField(10);
 			size = coinCount[index].getPreferredSize();
@@ -113,6 +110,24 @@ public class MyFrame extends JFrame
 		index++;
 	}
 	setCoinCount(vm);
+	
+	// An icon that represents the exact change light
+	exactChangeLight = new JLabel();
+	exactChangeLight.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("light.gif"))));
+	size = exactChangeLight.getPreferredSize();
+	exactChangeLight.setBounds(430, 230, size.width, size.height);
+	exactChangeLight.setBorder(BorderFactory.createEmptyBorder());
+	exactChangeLight.setVisible(vm.getExactChangeLight().isActive());
+	aFrame.getContentPane().add(exactChangeLight);
+	
+	// An icon that represents the out of order light
+	outOfOrderLight = new JLabel();
+	outOfOrderLight.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("light.gif"))));
+	size = outOfOrderLight.getPreferredSize();
+	outOfOrderLight.setBounds(430, 265, size.width, size.height);
+	outOfOrderLight.setBorder(BorderFactory.createEmptyBorder());
+	outOfOrderLight.setVisible(vm.getOutOfOrderLight().isActive());
+	aFrame.getContentPane().add(outOfOrderLight);
 	
 	
 	//the vending machine image
@@ -128,21 +143,19 @@ public class MyFrame extends JFrame
 	aFrame.setVisible(true);
     }
     
-    public void deactivateButton(int button) {
-    	maps.get(button).setVisible(false);
-    	aFrame.revalidate();
-    }
-    
-    public void setButtonPress(int button) {
-    	buttonPressed = button;
-    }
-    
+    /**
+     * A method to set the display message displayed by the vending machine GUI
+     * @param message is the message to be displayed by the vending machine GUI
+     */
     public void setMessage(String message) {
     	textField.setText(message);
     }
     
+    /**
+     * A method to get the count of the coins currently in the vending machine
+     * @param vm is the vending machine to get the counts from
+     */
     public void setCoinCount(VendingMachine vm) {
-    	String coinStrings[] = {"toonie", "loonie", "quarter", "dime", "nickel"};
     	int[] coinValues = {200, 100, 25, 10, 5};
     	int[] coinAmount = new int[5];
     	for(int j = 0; j < 5; j++) {
@@ -151,11 +164,29 @@ public class MyFrame extends JFrame
     	}
     }
     
-    public int getButtonPress() {
-    	return buttonPressed;
-    }
-    
+    /**
+     * A method to get the pop that was vended by the vending machine
+     * @param popName is the name of the pop that was vended
+     */
     public void vendedPop(String popName) {
     	vendedPop.setText(popName);
+    }
+    
+    /**
+     * A method to set the exact change light on the vending machine
+     * @param set is the boolean value that will change the visibility of the exact change light on
+     * the vending machine GUI
+     */
+    public void setExactChangeLight(boolean set) {
+    	exactChangeLight.setVisible(set);
+    }
+    
+    /**
+     * A method to set the out of order light on the vending machine
+     * @param set is the boolean value that will change the visibility of the out of order light on
+     * the vending machine GUI
+     */
+    public void setOutOfOrderLight(boolean set) {
+    	outOfOrderLight.setVisible(set);
     }
 }

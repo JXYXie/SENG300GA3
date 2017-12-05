@@ -43,7 +43,6 @@ public class EventListener implements ActionListener
 	switch(frameEvent){
 		case "Button0":
 			machine.getSelectionButton(0).press();
-			// aFrame.setShow(true);
 			aFrame.setTitle("button 0 was pressed");
 			break;			
 		case "Button1":
@@ -69,33 +68,8 @@ public class EventListener implements ActionListener
 			
 		case "Vended":
 			vendedPop.setText("None");
+			machine.getCoinReturn().unload();
 			break;
-			
-		// Currently working on making vended cans display	
-			
-//		case "Vended0":
-//			aFrame.deactivateButton(0);
-//			break;
-//			
-//		case "Vended1":
-//			aFrame.deactivateButton(1);
-//			break;
-//			
-//		case "Vended2":
-//			aFrame.deactivateButton(2);
-//			break;
-//			
-//		case "Vended3":
-//			aFrame.deactivateButton(3);
-//			break;
-//			
-//		case "Vended4":
-//			aFrame.deactivateButton(4);
-//			break;
-//			
-//		case "Vended5":
-//			aFrame.deactivateButton(5);
-//			break;
 			
 		case "loonie":
 			try {
