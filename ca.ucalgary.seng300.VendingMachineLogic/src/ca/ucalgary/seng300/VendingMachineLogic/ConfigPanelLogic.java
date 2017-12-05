@@ -119,7 +119,7 @@ public class ConfigPanelLogic {
 		vml.setCosts(costs); //updates the new costs arrayList
 		vm.configure(vml.getPopNames(), costs); //and configure the machine with the new costs
 		
-		double centCost = newCost / 100;
+		double centCost = ((double)newCost / 100);
 		event = ("New cost of " + vm.getPopKindName(index) + " is now " + formatter.format(centCost)); //Get the new cost
 		display(event);
 	}

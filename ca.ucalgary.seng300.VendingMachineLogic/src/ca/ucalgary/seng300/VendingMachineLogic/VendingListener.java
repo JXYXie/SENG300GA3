@@ -48,7 +48,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 		event = ("Inserted a " + vml.getCurrency() + coin.getValue() + " cent coin"); //Updates event for coin insertion
 		vml.log(event); //Now logs that event
 		
-		double centValue = vml.getCredit() / 100; //Calculates the value of the coin in cent
+		double centValue = ((double)vml.getCredit() / 100); //Calculates the value of the coin in cent
 		event = "Credit: " + vml.getCurrency() + formatter.format(centValue); //Updates event for the display
 		vml.display(event); //Displays the current credit for and logs it to file
 	}
