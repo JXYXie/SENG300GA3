@@ -46,6 +46,8 @@ public class TechJFrame extends JFrame {
 		
 		JTextPane txtpnPleaseSelectPop = new JTextPane(); //Instantiates the textpane
 		txtpnPleaseSelectPop.setEditable(false);
+		txtpnPleaseSelectPop.setText("Pop index to modify:"); //Default display message
+		this.setTitle("Configuration Panel");
 		
 		JButton keypad_9 = new JButton("9");
 		keypad_9.addActionListener(new ActionListener() {

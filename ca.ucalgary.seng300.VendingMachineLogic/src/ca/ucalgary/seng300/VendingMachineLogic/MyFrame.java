@@ -121,9 +121,6 @@ public class MyFrame extends JFrame
     picture1.setBounds(0, 0, 1200, 870);
     picture1.setPreferredSize(new Dimension(1200, 870));
     
-    
-    
-    
     //dont add anything after this picture, it determines the size because of "pack" being used
     aFrame.getContentPane().add(picture1);
     
