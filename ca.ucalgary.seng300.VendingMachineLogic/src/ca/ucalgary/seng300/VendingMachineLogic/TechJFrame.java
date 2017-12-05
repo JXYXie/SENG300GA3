@@ -30,6 +30,7 @@ public class TechJFrame extends JFrame {
 
 	private JPanel contentPane;
 	private ConfigPanelLogic cpl;
+	private JTextPane textPane;
 
 	/**
 	 * Creates the frame.
@@ -44,16 +45,16 @@ public class TechJFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JTextPane txtpnPleaseSelectPop = new JTextPane(); //Instantiates the textpane
-		txtpnPleaseSelectPop.setEditable(false);
-		txtpnPleaseSelectPop.setText("Pop index to modify:"); //Default display message
+		textPane = new JTextPane(); //Instantiates the textpane
+		textPane.setEditable(false);
+		textPane.setText("Pop index to modify:"); //Default display message
 		this.setTitle("Configuration Panel");
 		
 		JButton keypad_9 = new JButton("9");
 		keypad_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(9);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -61,7 +62,7 @@ public class TechJFrame extends JFrame {
 		keypad_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(8);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -69,7 +70,7 @@ public class TechJFrame extends JFrame {
 		keypad_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(7);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -77,7 +78,7 @@ public class TechJFrame extends JFrame {
 		keypad_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(6);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -85,7 +86,7 @@ public class TechJFrame extends JFrame {
 		keypad_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(5);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -93,7 +94,7 @@ public class TechJFrame extends JFrame {
 		keypad_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(4);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -101,7 +102,7 @@ public class TechJFrame extends JFrame {
 		keypad_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(3);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -109,7 +110,7 @@ public class TechJFrame extends JFrame {
 		keypad_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(2);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -117,7 +118,7 @@ public class TechJFrame extends JFrame {
 		keypad_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(1);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -125,7 +126,7 @@ public class TechJFrame extends JFrame {
 		keypad_0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cpl.pressButton(0);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -133,7 +134,7 @@ public class TechJFrame extends JFrame {
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressEnterButton();
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -141,7 +142,7 @@ public class TechJFrame extends JFrame {
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.reset();
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -150,7 +151,7 @@ public class TechJFrame extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(99)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtpnPleaseSelectPop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(keypad_1)
@@ -182,7 +183,7 @@ public class TechJFrame extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(83)
-					.addComponent(txtpnPleaseSelectPop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(73)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
@@ -219,4 +220,5 @@ public class TechJFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
+	
 }

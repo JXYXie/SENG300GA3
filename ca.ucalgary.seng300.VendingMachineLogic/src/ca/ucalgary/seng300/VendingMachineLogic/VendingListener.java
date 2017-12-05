@@ -8,6 +8,7 @@
  **********************************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import org.lsmr.vending.Coin;
 import org.lsmr.vending.PopCan;
@@ -19,6 +20,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	private VendingMachineLogic vml;
 	private VendingMachine vm;
 	
+	private NumberFormat formatter = NumberFormat.getCurrencyInstance();
 	private String event;
 	
 	/**
@@ -45,7 +47,9 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 		vml.addCredit(coin.getValue()); //Increment the credit when valid coins are inserted
 		event = ("Inserted a " + vml.getCurrency() + coin.getValue() + " cent coin"); //Updates event for coin insertion
 		vml.log(event); //Now logs that event
-		event = "Credit: " + vml.getCredit(); //Updates event for the display
+		
+		double centValue = vml.getCredit() / 100; //Calculates the value of the coin in cent
+		event = "Credit: " + vml.getCurrency() + formatter.format(centValue); //Updates event for the display
 		vml.display(event); //Displays the current credit for and logs it to file
 	}
 	//Rejects an invalid coin
