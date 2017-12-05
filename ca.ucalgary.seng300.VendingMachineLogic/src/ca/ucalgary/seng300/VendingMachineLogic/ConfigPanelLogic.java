@@ -110,6 +110,15 @@ public class ConfigPanelLogic {
 	}
 	
 	/**
+	 * Any char button (a-z) is pressed
+	 * @param btnIndex of the button that was pressed
+	 */
+	public void pressCharButton(int btnIndex, char letter) {
+		vm.getConfigurationPanel().getButton(btnIndex).press();
+		input += letter; //Concatenates the char pressed to input
+	}
+	
+	/**
 	 * @param index of the pop rack to be edited
 	 * @param newCost of the pop
 	 */

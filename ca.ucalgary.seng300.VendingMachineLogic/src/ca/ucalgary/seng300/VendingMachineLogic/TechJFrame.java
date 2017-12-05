@@ -9,7 +9,6 @@
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

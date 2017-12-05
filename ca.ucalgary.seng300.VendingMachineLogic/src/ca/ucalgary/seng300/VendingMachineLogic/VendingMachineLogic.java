@@ -228,7 +228,10 @@ public class VendingMachineLogic {
 		final Runnable looper = new Runnable() {
 			@Override
 			public void run() {
-				display(prompt);
+				if (userCredit == 0)
+					display(prompt);
+				else
+					resetTimer();
 			}
 		};
 		
