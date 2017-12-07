@@ -10,6 +10,7 @@ package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
@@ -41,7 +42,7 @@ public class TechJFrame extends JFrame {
 		cpl = vml.getConfigPanelLogic();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 640, 480);
+		setBounds(100, 100, 750, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -75,10 +76,13 @@ public class TechJFrame extends JFrame {
 		    for (int i = 0; i < alpha.length; i++) {
 		        alpha[i] = new JButton(Character.toString((char) (65+i))); //A = 65, B = 66...
 		        alpha[i].addActionListener(listener);
+		        alpha[i].setMargin(new Insets(0,0,0,0)); //make sure the margin is small for small buttons
 		        panel.add(alpha[i]);
 		    }
 		
 	     JButton shift = new JButton("SHIFT");
+	     shift.setSize(shift.getPreferredSize());
+	     shift.setMargin(new Insets(0,0,0,0));
 	     shift.addActionListener(new ActionListener() {
 	     	public void actionPerformed(ActionEvent arg0) {
 	     		//default is not shifted - take logic negation when pressed
@@ -181,7 +185,7 @@ public class TechJFrame extends JFrame {
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.reset();
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 				//Reset keyboard values
 				shifted = false;
 				alphaText = "";
@@ -193,7 +197,7 @@ public class TechJFrame extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(99)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtpnPleaseSelectPop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(keypad_1)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -225,7 +229,7 @@ public class TechJFrame extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(83)
-					.addComponent(txtpnPleaseSelectPop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
