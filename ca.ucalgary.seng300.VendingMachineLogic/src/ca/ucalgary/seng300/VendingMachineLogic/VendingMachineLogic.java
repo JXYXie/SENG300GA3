@@ -26,6 +26,7 @@ import java.util.concurrent.ScheduledFuture;
 
 import static java.util.concurrent.TimeUnit.*;
 
+import org.lsmr.vending.Coin;
 import org.lsmr.vending.hardware.*;
 
 public class VendingMachineLogic {
@@ -210,6 +211,36 @@ public class VendingMachineLogic {
 		}
 	}
 	
+	/**
+	 * A method that updates all listeners attached to communicate with the GUI
+	 * and load coins into the vending machine
+	 */
+	public void notifyCoinsLoadedGUI() {
+		for(GUIListener listener : listeners) {
+			listener.coinsLoaded();
+		}
+	}
+	
+	/**
+	 * A method that updates all listeners attached to communicate with the GUI
+	 * and unload coins from the vending machine
+	 */
+	public void notifyCoinsUnloadedGUI() {
+		for(GUIListener listener : listeners) {
+			listener.coinsUnloaded();
+		}
+	}
+	
+	/**
+	 * A method that updates all listeners attached to communicate with the GUI
+	 * how many coins were returned to the buyer
+	 * @param coin
+	 */
+	public void notifyCoinsReturned(Coin[] coin) {
+		for(GUIListener listener : listeners) {
+			listener.coinsReturned(coin);
+		}
+	}
 	/******************************** Display Functions ********************************************/
 	public void display(String event) {
 		if (event != null) {

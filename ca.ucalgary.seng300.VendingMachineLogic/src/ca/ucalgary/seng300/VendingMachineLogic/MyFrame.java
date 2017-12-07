@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.io.*;
 import java.util.HashMap;
 
+import org.lsmr.vending.Coin;
 import org.lsmr.vending.hardware.*;
 
 import ca.ucalgary.seng300.VendingMachineLogic.VendingMachineLogic;
@@ -21,8 +22,9 @@ public class MyFrame extends JFrame {
 	private JLabel picture1, exactChangeLight, outOfOrderLight;
 
 	private JLabel label1;
-	private JButton button, vendedButton;
-	private JTextField[] coinCount;
+	private JButton button, vendedButton, lock, unlock, loadCoins, loadPops, emptyCoins;
+	private JTextField[] coinCount, coinsReturned;
+	private int[] numberOfCoins = new int[6];
 
 	Dimension size;
 
@@ -47,7 +49,7 @@ public class MyFrame extends JFrame {
 		textField.setBounds(410, 195, size.width, size.height);
 		textField.setText("Display");
 		aFrame.getContentPane().add(textField);
-
+		
 		// A text field to represent what pop was vended based on the button
 		// pressed
 		vendedPop = new JTextField(10);
@@ -55,11 +57,24 @@ public class MyFrame extends JFrame {
 		vendedPop.setBounds(250, 690, size.width, size.height);
 		vendedPop.setText("None");
 		aFrame.getContentPane().add(vendedPop);
+		
+		// 5 text fields to represent what coins were returned to the buyer
+		coinsReturned = new JTextField[5];
+		int[] coinTypes = {200, 100, 25, 10, 5};
+		for(int j = 0; j < coinTypes.length; j++) {
+			coinsReturned[j] = new JTextField(15);
+			size = coinsReturned[j].getPreferredSize();
+			coinsReturned[j].setBounds(600, 700 + j*20, size.width, size.height);
+			coinsReturned[j].setVisible(true);
+			coinsReturned[j].setText("Empty");
+			aFrame.getContentPane().add(coinsReturned[j]);
+		}
 
-		EventListener aListener = new EventListener(aFrame, textField, vendedPop, vm);
+		EventListener aListener = new EventListener(aFrame, textField, vendedPop, vm, coinsReturned, numberOfCoins);
 
 		// A button to clear the coinReturn chute and also reset the display for
 		// the next pop
+		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
 		vendedButton = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
 		vendedButton.setActionCommand("Vended");
 		vendedButton.addActionListener(aListener);
@@ -68,6 +83,67 @@ public class MyFrame extends JFrame {
 		vendedButton.setBorder(BorderFactory.createEmptyBorder());
 		vendedButton.setContentAreaFilled(false);
 		aFrame.getContentPane().add(vendedButton);
+
+		// A button to lock the vending machine and enable safety for the technician
+		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
+		lock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		lock.setActionCommand("Lock");
+		lock.addActionListener(aListener);
+		size = lock.getPreferredSize();
+		lock.setBounds(900, 100, size.width, size.height);
+		lock.setBorder(BorderFactory.createEmptyBorder());
+		lock.setContentAreaFilled(false);
+		aFrame.getContentPane().add(lock);
+		
+		// A button to unlock the vending machine and disable the safety when the technician is done
+		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
+		unlock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		unlock.setActionCommand("Unlock");
+		unlock.addActionListener(aListener);
+		size = unlock.getPreferredSize();
+		unlock.setBounds(1050, 100, size.width, size.height);
+		unlock.setBorder(BorderFactory.createEmptyBorder());
+		unlock.setContentAreaFilled(false);
+		unlock.setVisible(false);
+		aFrame.getContentPane().add(unlock);
+		
+		// A method to load coins into the vending machine
+		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
+		loadCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		loadCoins.setActionCommand("LoadCoins");
+		loadCoins.addActionListener(aListener);
+		size = loadCoins.getPreferredSize();
+		loadCoins.setBounds(900, 300, size.width, size.height);
+		loadCoins.setBorder(BorderFactory.createEmptyBorder());
+		loadCoins.setContentAreaFilled(false);
+		loadCoins.setVisible(false);
+		aFrame.getContentPane().add(loadCoins);
+		
+		// A method to load pops into the vending machine
+		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
+		loadPops = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		loadPops.setActionCommand("LoadPops");
+		loadPops.addActionListener(aListener);
+		size = loadPops.getPreferredSize();
+		loadPops.setBounds(1050, 300, size.width, size.height);
+		loadPops.setBorder(BorderFactory.createEmptyBorder());
+		loadPops.setContentAreaFilled(false);
+		loadPops.setVisible(false);
+		aFrame.getContentPane().add(loadPops);
+		
+		// A method to unload the coin racks from the vending machine
+		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
+		emptyCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		emptyCoins.setActionCommand("EmptyCoins");
+		emptyCoins.addActionListener(aListener);
+		size = emptyCoins.getPreferredSize();
+		emptyCoins.setBounds(900, 500, size.width, size.height);
+		emptyCoins.setBorder(BorderFactory.createEmptyBorder());
+		emptyCoins.setContentAreaFilled(false);
+		emptyCoins.setVisible(false);
+		aFrame.getContentPane().add(emptyCoins);
+		
+		aListener.addLockUnlock(lock, unlock, loadCoins, loadPops, emptyCoins);
 
 		// buttons corresponding to pop cans
 		int i;
@@ -113,7 +189,7 @@ public class MyFrame extends JFrame {
 			}
 			index++;
 		}
-		setCoinCount(vm);
+		setCoinCount(vm);	
 
 		// An icon that represents the exact change light
 		exactChangeLight = new JLabel();
@@ -202,5 +278,40 @@ public class MyFrame extends JFrame {
 	 */
 	public void setOutOfOrderLight(boolean set) {
 		outOfOrderLight.setVisible(set);
+	}
+	
+	/**
+	 * A method used to show what coins were returned to the buyer
+	 * @param coins is the array of coins to get which coins were returned
+	 */
+	public void setCoinsReturnedCount(Coin[] coins) {
+		String[] coinTypes = {"toonie", "loonie", "quarter", "dime", "nickel"};
+		for(int i = 0; i < coins.length; i++) {
+			int x = coins[i].getValue();
+			System.out.println(coins[i].getValue());
+			if (x == 200) {
+				numberOfCoins[0] += 1;
+			}
+			if(x == 100) {
+				System.out.println("This happened");
+				numberOfCoins[1] += 1;
+			}
+			if(x == 25) {
+				numberOfCoins[2] += 1;
+			}
+			if(x == 10) {
+				numberOfCoins[3] += 1;
+			}
+			if(x == 5) {
+				numberOfCoins[4] += 1;
+			}
+		}
+		for(int j = 0; j < coinTypes.length; j++) {
+			if (numberOfCoins[j] == 1) {
+				coinsReturned[j].setText(numberOfCoins[j] + " " + coinTypes[j] + " returned.");
+			} else {
+				coinsReturned[j].setText(numberOfCoins[j] + " " + coinTypes[j] + "s returned.");
+			}
+		}
 	}
 }

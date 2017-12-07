@@ -112,6 +112,30 @@ public class Driver
 				aFrame.setOutOfOrderLight(set);
 			}
 
+			/**
+			 * Method used to unload coins from vending machine
+			 */
+			@Override
+			public void coinsUnloaded() {
+				aFrame.setCoinCount(machine);
+			}
+
+			/**
+			 * Method used to load coins in vending machine
+			 */
+			@Override
+			public void coinsLoaded() {
+				aFrame.setCoinCount(machine);
+			}
+
+			/**
+			 * Method used to show returned coins in vending machine
+			 */
+			@Override
+			public void coinsReturned(Coin[] coins) {
+				aFrame.setCoinsReturnedCount(coins);
+			}
+
         	
         }
         // Instantiates the gui listener and registers it to the vending machine logic

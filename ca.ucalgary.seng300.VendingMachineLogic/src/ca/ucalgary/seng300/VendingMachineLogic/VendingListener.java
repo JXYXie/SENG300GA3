@@ -100,10 +100,14 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	}
 
 	@Override
-	public void coinsLoaded(CoinRack rack, Coin... coins) {}
+	public void coinsLoaded(CoinRack rack, Coin... coins) {
+		vml.notifyCoinsLoadedGUI();
+	}
 
 	@Override
-	public void coinsUnloaded(CoinRack rack, Coin... coins) {}
+	public void coinsUnloaded(CoinRack rack, Coin... coins) {
+		vml.notifyCoinsUnloadedGUI();
+	}
 	/***********************************End CoinRack Listener**************************************/
 	
 	
@@ -144,6 +148,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void coinsDelivered(CoinReturn coinReturn, Coin[] coins) {
 		event = Arrays.toString(coins) + " cent coin is returned";
 		vml.log(event);
+		vml.notifyCoinsReturned(coins);
 	}
 
 	@Override
