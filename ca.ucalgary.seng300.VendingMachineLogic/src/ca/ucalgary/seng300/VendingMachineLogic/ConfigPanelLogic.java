@@ -3,6 +3,7 @@
  * Handles the logic to allow the access and change of vending item costs
  *through button presses
  * @author Xin Yan (Jack) Xie
+ * @author Steffen Gerdes
  *******************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
@@ -17,7 +18,7 @@ public class ConfigPanelLogic {
 	private VendingMachineLogic vml;
 	private VendingMachine vm;
 	
-	private TechJFrame techFrame;
+	private TechJFrame techFrame; //Config panel GUI JFrame object
 	
 	private boolean indexMode; //whether the technician is currently accessing the pop index as opposed to pop cost
 	private String input = ""; //the input from the keypad
@@ -26,7 +27,7 @@ public class ConfigPanelLogic {
 	private int indexToModify;
 	private int costToModify;
 	
-	private NumberFormat formatter = NumberFormat.getCurrencyInstance();
+	private NumberFormat formatter = NumberFormat.getCurrencyInstance(); //money format
 	
 	/**
 	 * Constructor
@@ -43,7 +44,7 @@ public class ConfigPanelLogic {
 	 */
 	public void initialize() {
 		techFrame = new TechJFrame(vm, vml);
-		techFrame.setVisible(true);
+		techFrame.setVisible(true); //Sets the config panel visible
 	}
 	
 	/**
@@ -112,6 +113,7 @@ public class ConfigPanelLogic {
 	/**
 	 * Any char button (a-z) is pressed
 	 * @param btnIndex of the button that was pressed
+	 * @param the letter of the button that was pressed
 	 */
 	public void pressCharButton(int btnIndex, char letter) {
 		vm.getConfigurationPanel().getButton(btnIndex).press();

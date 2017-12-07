@@ -1,7 +1,7 @@
 /*****************************************************
  * Custom JFrame class
  * Currently has a JPanel that acts as the internal display
- *and 12 buttons (num 0 to 9, enter button and reset button)
+ *and 39 buttons (num 0 to 9, chars a - z, enter button, shift button, reset button)
  * @author Sheldon Birch-Lucas
  * @author Jacky Wu
  * @author Xin Yan (Jack) Xie

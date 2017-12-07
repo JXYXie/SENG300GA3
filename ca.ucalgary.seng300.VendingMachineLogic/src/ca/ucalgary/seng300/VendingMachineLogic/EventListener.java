@@ -1,3 +1,8 @@
+/*********************************************
+ * MyFrame element listeners
+ * This class listens for any button press events in the main GUI
+ *and then acts accordingly by calling relevant methods in the vending machine
+ */
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import javax.swing.*;

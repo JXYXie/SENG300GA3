@@ -1,3 +1,20 @@
+/************************RUN ME!******************************
+ * SENG 300 Group Assignment 3 driver class
+ * Main logic class
+ * @author Matthew Wojcik
+ * @author Preston Tran
+ * @author Xin Yan (Jack) Xie
+ * @author Jacky Wu
+ * @author Sara Strand
+ * @author Jaskaran Sidhu
+ * @author Steffen Gerdes
+ * @author Sheldon Birch-Lucas
+ * @author Siddharth Kataria
+ * This driver class is used to start up the vending machine GUI
+ *and load the vending machine with pops and coins to be used by the client
+ * This class also contains a GUI listener class which listens for events 
+ *from the Vending Machine Logic to pass on to the GUI
+ *************************************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.io.IOException;

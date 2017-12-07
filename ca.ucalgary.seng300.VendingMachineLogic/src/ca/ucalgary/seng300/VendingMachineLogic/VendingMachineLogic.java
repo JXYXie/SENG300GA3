@@ -33,7 +33,7 @@ public class VendingMachineLogic {
 
 	private VendingMachine vm; //Vending machine object
 	private VendingListener vlistener; //listener object
-	private ConfigPanelLogic cpl;
+	private ConfigPanelLogic cpl; //config panel logic object
 	
 	//fields for the message looping
 	private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -99,33 +99,41 @@ public class VendingMachineLogic {
 		displayCredit(); //Display looping message at beginning since credit is 0
 	}
 	
+	/**
+	 * Buy method
+	 * is called when the user attempts to buy anything from the vending machine
+	 * @param btnIndex the index of the button of the pop that is pressed (bought)
+	 * @throws DisabledException
+	 * @throws CapacityExceededException
+	 * @throws EmptyException
+	 */
 	public void buy(int btnIndex) throws DisabledException, CapacityExceededException, EmptyException {
 		
-		int cost = vm.getPopKindCost(btnIndex);
+		int cost = vm.getPopKindCost(btnIndex); //gets the cost of the pop that the user is trying to buy
 		
-		if (cost > userCredit) { //not enough money
-			event = "Insufficient credit: " + (cost - userCredit) + " cents short";
+		if (cost > userCredit) { //if the user does not have enough money
+			event = "Insufficient credit: " + (cost - userCredit) + " cents short"; //then display this to show how much more money the user needs
 			display(event);
 		} else { //enough money
-			vm.getPopCanRack(btnIndex).dispensePopCan(); //dispenses the pop
-			vm.getCoinReceptacle().storeCoins(); //store the coins
+			vm.getPopCanRack(btnIndex).dispensePopCan(); //tries to dispense the pop
+			vm.getCoinReceptacle().storeCoins(); //and store the coins
 			userCredit -= cost; //update the new credit
 			returnChange(); //return the remaining change if there is any
-			displayCredit(); //display the credit or if credit is 0 display greeting message
+			displayCredit(); //display the credit or if credit is 0 display greeting message again
 		}
 	}
-	/******************************** Change Functions ********************************************/
 	
+	/******************************** Change Functions ********************************************/
 	/**
 	 * Returns the change (could be exact or not exact)
-	 * Algorithm will always return the highest value coin when possible
+	 * Algorithm will always return the highest value coin when possible (Slightly modified greedy algorithm)
 	 * @throws DisabledException
 	 * @throws CapacityExceededException
 	 * @throws EmptyException 
 	 */
 	public void returnChange() throws DisabledException, CapacityExceededException, EmptyException{
 		
-		int coin;
+		int coin; //the coin the vending machine will try to return
 		int[] coinValues = new int[vm.getNumberOfCoinRacks()]; //array of the number of coin racks
 		CoinRack returnRack;
 		
@@ -141,15 +149,15 @@ public class VendingMachineLogic {
 			if (userCredit == 0) //break out of the loop if the credit is 0
 				break;
 			
-			while ((userCredit >= coin) && (returnRack.size() > 0)) {
+			while ((userCredit >= coin) && (returnRack.size() > 0)) { //otherwise tries to return the highest value coin
 				returnRack.releaseCoin();
-				addCredit(-coin);
+				addCredit(-coin); //updates the user credit to account for the returned change
 			}
 		}
 		
 		if (userCredit != 0) { //if there is still money left in the vending machine that means there is not enough change for the user
-			vm.getExactChangeLight().activate();
-		} else if (userCredit == 0 && vm.getExactChangeLight().isActive()) { //if the exact change light is already turned on
+			vm.getExactChangeLight().activate(); //so exact change light is turned on
+		} else if (userCredit == 0 && vm.getExactChangeLight().isActive()) { //if there is no money left and the exact change light is turned on
 			vm.getExactChangeLight().deactivate(); //turn it off
 		}
 		
@@ -244,14 +252,13 @@ public class VendingMachineLogic {
 	/******************************** Display Functions ********************************************/
 	public void display(String event) {
 		if (event != null) {
-			vm.getDisplay().display(event);
-			notifyMachineGUI(event);
-			log("DISPLAY: " + event);
+			vm.getDisplay().display(event); //display the message/event to the vending machine
+			notifyMachineGUI(event); //notify the GUI about the message/event
+			log("DISPLAY: " + event); //and logs it to the event log file
 		}
 	}
 	/**
-	 * Displays the hi greeting prompt every second for 5 seconds
-	 * 
+	 * Displays the hi greeting prompt every second for 5 seconds if there userCredit = 0 in the vending machine
 	 */
 	public void displayHi() {
 		
@@ -286,7 +293,9 @@ public class VendingMachineLogic {
 			displayHi();
 		}
 	}
-	
+	/**
+	 * Cancels the timer for the scheduled display loop
+	 */
 	public void resetTimer() {
 		beeperHandle.cancel(true);
 	}
@@ -312,7 +321,7 @@ public class VendingMachineLogic {
 	}
 	
 	/**
-	 * If the configuration panel is accessed
+	 * @return the ConfigPanelLogic object
 	 */
 	public ConfigPanelLogic getConfigPanelLogic() {
 		return cpl;
@@ -326,6 +335,10 @@ public class VendingMachineLogic {
 		return event;
 	}
 	
+	/**
+	 * Logs a line of string to the event log file
+	 * @param line of string to be logged
+	 */
 	public void log(String line) {
 		logger.log(line);
 		this.event = line;
@@ -338,7 +351,7 @@ public class VendingMachineLogic {
 	}
 	
 	/**
-	 * @param amount of credit to be added
+	 * @param amount of credit to be directly added (for credit card/alternate forms of payment)
 	 */
 	public void addCredit(int amount) {
 		userCredit += amount;

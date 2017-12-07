@@ -1,3 +1,9 @@
+/************************************************
+ * Main vending machine GUI frame class
+ * Uses a custom extended JFrame with buttons, labels, and a textfield to represent the display
+ * @author Matthew Wojcik
+ * @author Preston Tran
+ ***********************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.awt.*;
