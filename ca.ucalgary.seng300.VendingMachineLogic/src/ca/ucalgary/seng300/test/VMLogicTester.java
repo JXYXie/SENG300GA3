@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import ca.ucalgary.seng300.VendingMachineLogic.*;
 import org.lsmr.vending.Coin;
+import org.lsmr.vending.PopCan;
 import org.lsmr.vending.hardware.*;
 
 import org.junit.Test;
@@ -18,6 +19,7 @@ import org.junit.Test;
 public class VMLogicTester {
 	private VendingMachine vm;
 	private VendingMachineLogic vml;
+	private ConfigPanelLogic cpl;
 	@Before
 	public void setUp() throws Exception {
 		
@@ -31,6 +33,7 @@ public class VMLogicTester {
 		
 		vm = new VendingMachine(coinKinds, btnCount, coinRackCapacity, popRackCapacity, receptacleCapacity, deliveryChuteCapacity, coinReturnCapacity);
 		vml = new VendingMachineLogic(vm);
+		cpl = vml.getConfigPanelLogic();
 		
 		List<String> popNames = new ArrayList<String>(); //List of pop names
 		
@@ -74,6 +77,7 @@ public class VMLogicTester {
 	    while (true) { Thread.sleep(2000); }
 	}
 	
+	
 	//Purchase normally
 	//This test makes sure that valid coins are accepted and added to the vending machine's credit, a pop
 	//is vended when its button is pushed and change is returned to the user 
@@ -89,6 +93,8 @@ public class VMLogicTester {
 		
 		assertEquals(vm.getPopCanRack(1).size(), 4);
 		assertTrue(vm.getCoinReturn().size() == 3); //should be 3 coins(loonie and 3 quarters)
+		cpl.initialize();
+		cpl.reset();
 	}
 	
 	//Invalid coin insertion
@@ -101,6 +107,8 @@ public class VMLogicTester {
 		vm.getSelectionButton(1).press();
 		assertTrue(vm.getCoinReturn().size() > 0); //the invalid coin should still be returned
 	}
+	
+	
 	
 	//Test to check when you attempt to purchase a something that is not in stock
 	@Test
@@ -116,9 +124,12 @@ public class VMLogicTester {
 		vm.getSelectionButton(3).press();
 		
 		assertEquals(vml.getEvent(), "DISPLAY: Mountain Dew is sold out!");
+	
 	}
 	
-	//Testing for when the coin receptacle becomes full. Test should pass if exception is handled correctly
+	//Testing for when the coin receptacle becomes full. When full, coin receptacle should no 
+	//longer accept coins and it should enable safety and lock the machine. Test should pass if 
+	//exception is handled correctly
 	@Test(expected = DisabledException.class)
 	public void test4() throws DisabledException, CapacityExceededException {
 		Coin loonie = new Coin(100);		
@@ -126,12 +137,19 @@ public class VMLogicTester {
 		vm.getCoinSlot().addCoin(loonie);
 		vm.getCoinSlot().addCoin(loonie);
 		vm.getCoinSlot().addCoin(loonie);
+		
+		assertEquals(vm.getCoinReceptacle().size(), 4);
+		assertTrue(vm.isSafetyEnabled());
+		assertTrue(vm.getLock().isLocked());
+		
 		try {
 			vm.getCoinSlot().addCoin(loonie);
 		}
 		finally {
+			assertEquals(vm.getCoinReceptacle().size(), 4);
 		}
 	}
+	
 	
 	
 	//attempting to purchase with insufficient credits
@@ -160,6 +178,8 @@ public class VMLogicTester {
 		
 		vm.disableSafety(); //safety is disabled
 		vm.getSelectionButton(4).press();
+		assertEquals(vm.getPopCanRack(4).size(), 4);
+		assertTrue(vm.getCoinReturn().size() > 0);
 		
 		for (int i = 0; i < vm.getNumberOfCoinRacks(); i ++ ) {
 			vm.getCoinRack(i).unload(); //unload all the coins for testing purposes
@@ -171,5 +191,36 @@ public class VMLogicTester {
 		
 		assertEquals(vm.getExactChangeLight().isActive(), true); //the exact change light should be on now
 		assertEquals(vml.getCredit(), 150); //and the remaining credit is still saved
+
 	}
+		
+	
+	//Make sure that safety becomes enabled and machine locks when coin return is full and 
+	//coin return doesn't accept anymore coins 
+	@Test(expected = CapacityExceededException.class)
+	public void test7() throws CapacityExceededException, DisabledException {
+		Coin quarter = new Coin(25);
+
+		vm.getCoinReturn().acceptCoin(quarter);
+		vm.getCoinReturn().acceptCoin(quarter);
+		vm.getCoinReturn().acceptCoin(quarter);
+		vm.getCoinReturn().acceptCoin(quarter);
+		vm.getCoinReturn().acceptCoin(quarter);
+		vm.getCoinReturn().acceptCoin(quarter);
+		vm.getCoinReturn().acceptCoin(quarter);
+		vm.getCoinReturn().acceptCoin(quarter);
+
+		assertEquals(vm.getCoinReturn().size(), 8);
+		assertFalse(vm.getCoinReturn().hasSpace());
+		assertTrue(vm.isSafetyEnabled());
+		assertTrue(vm.getLock().isLocked());     
+
+		try {
+			vm.getCoinReturn().acceptCoin(quarter);
+		}
+		finally {
+			assertEquals(vm.getCoinReturn().size(), 8);
+		}
+	}
+ 
 }
