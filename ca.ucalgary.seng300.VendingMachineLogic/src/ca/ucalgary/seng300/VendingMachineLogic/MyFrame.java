@@ -22,7 +22,7 @@ public class MyFrame extends JFrame {
 	private JLabel picture1, exactChangeLight, outOfOrderLight;
 
 	private JLabel label1;
-	private JButton button, vendedButton, lock, unlock, loadCoins, loadPops, emptyCoins;
+	private JButton button, vendedButton, lock, unlock, loadCoins, loadPops, emptyCoins, configPanel;
 	private JTextField[] coinCount, coinsReturned;
 	private int[] numberOfCoins = new int[6];
 
@@ -143,7 +143,20 @@ public class MyFrame extends JFrame {
 		emptyCoins.setVisible(false);
 		aFrame.getContentPane().add(emptyCoins);
 		
-		aListener.addLockUnlock(lock, unlock, loadCoins, loadPops, emptyCoins);
+		//button for calling the config panel GUI
+		/**MMMM**/
+		configPanel = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("configpb.gif"))));
+		configPanel.setActionCommand("configPanel");
+		configPanel.addActionListener(aListener);
+		size = configPanel.getPreferredSize();
+		configPanel.setBounds(1050, 500, size.width, size.height);
+		configPanel.setBorder(BorderFactory.createEmptyBorder());
+		configPanel.setContentAreaFilled(false);
+		emptyCoins.setVisible(false);
+		aFrame.getContentPane().add(configPanel);
+
+		
+		aListener.addLockUnlock(lock, unlock, loadCoins, loadPops, emptyCoins, configPanel);
 
 		// buttons corresponding to pop cans
 		int i;
