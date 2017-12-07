@@ -25,6 +25,8 @@ public class Driver
 		
 		VendingMachine machine = new VendingMachine(coinKinds, btnCount, coinRackCapacity, popRackCapacity, receptacleCapacity, deliveryChuteCapacity, coinReturnCapacity);
 		VendingMachineLogic machineLogic = new VendingMachineLogic(machine);
+		ConfigPanelLogic configPanelLogic = machineLogic.getConfigPanelLogic();
+		
 		List<String> popNames = new ArrayList<String>(); //List of pop names
 		
 		popNames.add("Water");
