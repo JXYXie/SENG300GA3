@@ -1,0 +1,593 @@
+commit a02aac099856d76b797f07e7a41aeb56c93fafa5
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Dec 7 01:18:58 2017 -0700
+
+    Deleted duplicate GUI files
+
+commit d676091fc5a50b4370099b8f6c2afef375ac0b55
+Merge: ac2e342 dc27b2a
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Dec 7 00:58:27 2017 -0700
+
+    Merge pull request #10 from JXYXie/GUI's_Mere
+    
+    Merged both GUI's
+
+commit dc27b2a9fc6d05dd502cec5c904d91ddb3f2b595
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Thu Dec 7 00:57:28 2017 -0700
+
+    Merged both GUI's
+
+commit ac2e342e8f7d9980fcfbb8ca9cf3b509e218342b
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Dec 7 00:30:08 2017 -0700
+
+    forgot the panel in the addLockUnlock
+
+commit 65790f542f652bf4eaa6a0db35d608071a624787
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Dec 7 00:21:31 2017 -0700
+
+    Update EventListener.java
+
+commit c4182ca0f9bff44bda31a66f96be10da0a95eb1a
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Dec 7 00:14:39 2017 -0700
+
+    added case for configPanel
+    
+    added config panel case to event list, only available when locked
+
+commit b3d6ca0db9e3079eea050fbada6c75de76796357
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Dec 7 00:10:07 2017 -0700
+
+    added button for config panel
+
+commit 77512f0b76045a7cdbe407e9901dbf59b25dfa18
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Dec 7 00:00:13 2017 -0700
+
+    new image 07/12
+
+commit d2e5236654040b6c3bdfa6a5385a4a9788866c22
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Dec 6 23:23:58 2017 -0700
+
+    Added in support to allow the config panel to be properly opened from the main GUI
+    
+    - Also removed config panel being opened from the test suite as it is now redundant
+
+commit 0f79b74adc5128cc0108d8222448af7ced2a01be
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 23:21:39 2017 -0700
+
+    enlarged frame to fit popcanpile on screen
+
+commit 8fb371b7ff6ef51bb1266073ba4c96a0e2b7f391
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 23:18:02 2017 -0700
+
+    updated button images in frame
+
+commit 4eb467abc5fa14a005e808591000ba0877d071a6
+Merge: 80026be 24dbc5d
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Dec 6 23:16:59 2017 -0700
+
+    Merge branch 'master' of https://github.com/JXYXie/SENG300GA3
+
+commit 80026be4b3d6569e8067c18b3edc25d412cebc55
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Dec 6 23:16:57 2017 -0700
+
+    Fixed config panel button margin sizes as well as panel size to increase overall look
+
+commit 24dbc5da0c91041b6ba668c714648774719444cd
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 23:14:03 2017 -0700
+
+    image 06/12
+
+commit df2f0861ca0c1b00f110cb6dc31bcc7c60e3e5f1
+Merge: cac43e4 cdf53b1
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Dec 6 23:00:02 2017 -0700
+
+    Merge pull request #9 from JXYXie/AlphaButtonsToTechGUI
+    
+    Added keyboard with shift to tech panel GUI - needs testing
+
+commit cdf53b1e8a3dc4e597386be9d4f0988e31c7954c
+Merge: 95c9e81 ad6781b
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Dec 6 22:59:26 2017 -0700
+
+    Merge branch 'master' into AlphaButtonsToTechGUI
+
+commit cac43e4cdb8aedde63d448f123bcc4dd6066da79
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 22:53:57 2017 -0700
+
+    Add files via upload
+
+commit ad6781b64a51fba23f602478c905f5ca25fad622
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 22:53:41 2017 -0700
+
+    Delete coinpile.gif
+
+commit c9408bf166b602f5f9edc9d1712a841db5e8ca48
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 22:52:37 2017 -0700
+
+    new images 06/12
+
+commit c98707f2af7b768ff4b93358d9d3750516773049
+Merge: 33fe194 c64d58c
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Dec 6 22:50:08 2017 -0700
+
+    Merge pull request #8 from JXYXie/vendingGUI_Lock,Coins
+    
+    GUI now has lock/unlock and can load pops
+
+commit 33fe19427986a707aba8bdccc14ca2e37e7fda7c
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 22:45:30 2017 -0700
+
+    added invalid coin entry for washer
+
+commit 33529e4dfd5e3db55c3903659e6c28ab7fd7fec9
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 22:41:20 2017 -0700
+
+    new images 06/12
+
+commit 532ed43a2648edbf4a155d377395489b62688939
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 22:40:40 2017 -0700
+
+    Delete coinpile.gif
+
+commit f5aa9d100c92aa6e23ff0fe5f7f09e886c543267
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Dec 6 22:40:35 2017 -0700
+
+    Delete popcanpile.gif
+
+commit c64d58c2548ebeca12b64456d4d67b0de0db2bb7
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Wed Dec 6 17:51:32 2017 -0700
+
+    GUI now has lock/unlock and can load pops
+
+commit 836da7ee081e8b75f7211c3a557cc00f69356247
+Author: JaskaranSidhu <32685059+JaskaranSidhu@users.noreply.github.com>
+Date:   Wed Dec 6 01:20:34 2017 -0700
+
+    Final copy of Design justification
+
+commit 8fa1e493c3822f8c47d4bd5875ccad16e47a59c5
+Author: JaskaranSidhu <32685059+JaskaranSidhu@users.noreply.github.com>
+Date:   Wed Dec 6 01:17:58 2017 -0700
+
+    Delete Design justification GA4.docx
+
+commit cedd6012f9f6b641930631b85669e3199b0359d9
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Tue Dec 5 17:55:04 2017 -0700
+
+    new images 05/12
+    
+    made images for a pie of pop cans and pile of coins to click when filling the VM.
+    made image for picking up the pop can and change from the VM.
+
+commit 95c9e81426f3d82c6d6d1d11f8c35b6dcd03dcd6
+Author: sjbirchl <sjbirchl@ucalgary.ca>
+Date:   Tue Dec 5 12:03:31 2017 -0700
+
+    Added keyboard with shift to tech panel GUI - needs testing
+
+commit 9e68f5d52c3d38ec0afe3f690c9474c97cdbe6ff
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Tue Dec 5 11:38:10 2017 -0700
+
+    Fixed display interrupted bug
+    
+    - Its actually fixed now
+
+commit 3aa590987c7376b91f86c7bcbd487170c394230a
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Tue Dec 5 11:34:36 2017 -0700
+
+    Fixed main display bug not updating correctly, added support for config panel logic to accept char buttons
+
+commit ccf3a45dd1b76eb17f143234d0257a85d7afafd8
+Merge: 2fc0936 e466fee
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Tue Dec 5 09:46:07 2017 -0700
+
+    Merge pull request #7 from JXYXie/vendingGUI_lights
+    
+    Added exact change light and out of order light, also commented for clarity
+
+commit 2fc09369d6866ebb4b47f5b02abb2b1de969cc73
+Author: JaskaranSidhu <32685059+JaskaranSidhu@users.noreply.github.com>
+Date:   Tue Dec 5 03:10:59 2017 -0700
+
+    Uploaded new Justification
+
+commit cd5478786e3676e3797c9fa1bf213bf591d1bfa0
+Author: JaskaranSidhu <32685059+JaskaranSidhu@users.noreply.github.com>
+Date:   Tue Dec 5 03:10:33 2017 -0700
+
+    The last two small paragraphs are still incomplete
+
+commit e466feed0aab4df70e11c34de90c6cc8f469d1f2
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Tue Dec 5 01:23:49 2017 -0700
+
+    Added exact change light and out of order light, also commented for clarity
+
+commit ab1b8c3bc8884d3eb7cd9d65dba749977aed2366
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 23:25:38 2017 -0700
+
+    Fixed small bug where currency is not being casted to double resulting in unwanted rounded integers
+
+commit 88db96eee122f234579bbb0351efd007b4878b95
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 22:40:51 2017 -0700
+
+    Added in proper currency format and made config panel display the new pop cost
+
+commit e6e84fe9fd5481ca26f72fbf26eac68fb88dacd3
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 21:59:15 2017 -0700
+
+    Added title and default display message to ConfigPanel GUI
+
+commit 755ed64106a41018eaf51487571f2da5655cd2f2
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 16:59:14 2017 -0700
+
+    Added in final documentations for code clarity
+
+commit 2eaa4663c472c08bcedbd48cb1085f2b24ceef7d
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 16:40:16 2017 -0700
+
+    Fixed keypad format for Config Panel GUI
+
+commit 7ea8cda460f7dc61f1d10c8971f0ec0e9f8ac5e1
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 16:18:41 2017 -0700
+
+    Fixed few display errors in config panel GUI
+
+commit 042933d3f2140ff29cc1a241fc435e45b25a2f28
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 15:50:17 2017 -0700
+
+    Added support for config panel testing
+
+commit 1d0555ee1c3f46c1ddba452cc10cf15803637437
+Merge: d60009a b835f8f
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 15:43:11 2017 -0700
+
+    Merge pull request #6 from JXYXie/vendingGUI_merged
+    
+    Add files via upload
+
+commit b835f8f403f2f1ffd316e1053a6156ad46d2168a
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Mon Dec 4 15:42:05 2017 -0700
+
+    Add files via upload
+    
+    Merged GUI with VendingMachine
+
+commit d60009a8897125e457804703ba61ad1da7e58dc9
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 15:24:37 2017 -0700
+
+    Moved GUI folder location and fixed Config Panel not instantiating properly
+
+commit bd6649c31434697b6ebe7d44fe43244eb27c18b8
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 15:05:23 2017 -0700
+
+    Cleared eventlogs
+
+commit 9ece186441f35f6aa1e4c3299db9ef48b5a86a49
+Merge: f2f868a 136b692
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 15:03:47 2017 -0700
+
+    Merge branch 'active'
+
+commit 136b6928910b0ed6a44b9b37a6d17500146c6b01
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 14:58:45 2017 -0700
+
+    Killed bugs
+
+commit f2f868a8d35a7db9f3324f4703d6981b5cedea21
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Mon Dec 4 14:36:24 2017 -0700
+
+    Add files via upload
+
+commit e244a1fedc8b20c3aed30bee63b9f0b1462f8da3
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 14:32:03 2017 -0700
+
+    Fixed project paths
+
+commit 63ccf2fc874f0e1159ca99464d6bc4786287fde6
+Merge: 85fb61a 8ccb2ee
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Mon Dec 4 12:26:25 2017 -0700
+
+    Merge pull request #4 from JXYXie/vendingGUI_Connection
+    
+    Vending gui connection
+
+commit 8ccb2ee0c89c0b9f3a8811387415ed35de578e67
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Mon Dec 4 00:49:22 2017 -0700
+
+    Added a couple methods in VMLogic and added new listener
+
+commit 1ccc1b673c1e801995918a20cf749acc7fdf43b9
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Mon Dec 4 00:47:55 2017 -0700
+
+    Modified Driver, EventListener and MyFrame to connect the GUI to hardware
+    
+    Still need to work on showing what pop was purchased, but the functionality is there
+
+commit f05d13f561bf66360dfd169960d2101d27de5893
+Author: PKT92 <32745248+PKT92@users.noreply.github.com>
+Date:   Mon Dec 4 00:44:38 2017 -0700
+
+    Add files via upload
+
+commit 85fb61a9809722dcac7ef7f6ae4ace2c0ba42def
+Author: JackyJWu <jackyjwu86@gmail.com>
+Date:   Sun Dec 3 22:51:33 2017 -0700
+
+    added price price show
+
+commit 621e0de60b4852be61c13168a40b39ca7e6ee6e8
+Author: JackyJWu <jackyjwu86@gmail.com>
+Date:   Sun Dec 3 22:24:47 2017 -0700
+
+    added Reset/Enter + bugfixes
+
+commit 39638324c2aa7eb8e5550c2f38297eedc2921c1c
+Author: JackyJWu <jackyjwu86@gmail.com>
+Date:   Sun Dec 3 22:09:22 2017 -0700
+
+    connected Numpad# to ConfigPanelLogic
+
+commit bedb8afa77e54d1e1b3a380b6e97b8121dddadee
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Dec 3 13:41:23 2017 -0700
+
+    Made the internal display system of the Config Panel easier to integrate into GUI
+    
+    -Added a getter for the current display message
+    -Made it easier to manipulte the display message
+    -Added file logging for current display message
+
+commit c18af5fc0c07c9e22c0ae8179f2c2e9eec778043
+Merge: c037d68 aeeb25a
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Dec 3 13:20:21 2017 -0700
+
+    Merge pull request #3 from JXYXie/TechPanelGUI
+    
+    KeyPad with some of the logic.
+
+commit c037d680d82797db9f265123deff3d2a84d61bea
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Dec 3 13:19:21 2017 -0700
+
+    Hardware side of things are now triggered by button press methods
+    
+    - Changed method names to better reflect change
+
+commit 447cab0a1cd6632361ea42fcf3d9fc7725974942
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Sun Dec 3 13:11:55 2017 -0700
+
+    Candycane vm
+    
+    i just read that he said he wants it to look like an ugly candy cane
+
+commit 501f02be956f5ff4f46871351b4cc699cd82ac9c
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Sun Dec 3 12:52:31 2017 -0700
+
+    background wasnt see through
+
+commit 54ef5d99e6c62beb080196334798401452a25a2e
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Sun Dec 3 12:39:49 2017 -0700
+
+    0000FF to 7FFF00 version
+    
+    dont have time to make it look clean :)
+
+commit aeeb25ae11852d84cde423f11a26821bd3c0b104
+Author: sjbirchl <sjbirchl@ucalgary.ca>
+Date:   Sun Dec 3 12:24:40 2017 -0700
+
+    KeyPad with some of the logic.
+
+commit 8e3477938c1e8d871a7816fc3a942c354f85c87a
+Merge: 43097b5 ca74bee
+Author: espectro93 <Gerdes.Steffen@googlemail.com>
+Date:   Sat Dec 2 14:43:13 2017 -0700
+
+    Merge pull request #2 from JXYXie/validate_input
+    
+    validate input
+
+commit ca74beef1135198a394c052dd959f9e41d131fa6
+Author: Steffen <sg@thepeaklab.com>
+Date:   Sat Dec 2 14:39:28 2017 -0700
+
+    validate input
+
+commit 43097b5a4a61c865f2388454070bab4dcb82dab8
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Fri Dec 1 19:32:28 2017 -0700
+
+    Added hardware 2.3 and finished config panel logic
+    
+    - The test suite now takes advantage of the new costs and popname getters and setters to configure
+
+commit f5dcfdb6d9b5ba7506395d47199ad8dd0a4d45c4
+Merge: a8cb822 1b4fe16
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Nov 30 22:29:57 2017 -0700
+
+    Merge branch 'master' of https://github.com/JXYXie/SENG300GA3
+
+commit a8cb822cfe54e3bacfac58279702187db9cff23d
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Nov 30 22:29:51 2017 -0700
+
+    Added inital configuration panel logic
+    
+    - Allows the getting of button input and changing of corresponding pop cost
+    - Requires GUI component
+    - Not fully implemented
+
+commit 1b4fe165e5353e01a4d925ebc39d1ae930965f81
+Merge: 6afacf7 5403954
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Nov 30 20:48:52 2017 -0700
+
+    Merge pull request #1 from JXYXie/vendingGUI
+    
+    Vending gui
+
+commit 5403954d10255ea8656c8f4a166289f0b5021998
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Nov 30 20:45:06 2017 -0700
+
+    fixed comments
+
+commit 88f46fdca87c1b403da1b8c8da0f30b426058ba3
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Nov 30 20:41:50 2017 -0700
+
+    proper GUI, no connection to CM yet
+    
+    decent looking GUI, im leaving the connection with the vending machine to Preston
+
+commit 59b2588f584159893bedb906ee7d3c5dfbc4073a
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Nov 30 20:38:49 2017 -0700
+
+    Delete bottlecap.gif
+
+commit 9303ef885717a69d41233698e45dd1beb0254940
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Nov 30 20:38:40 2017 -0700
+
+    Delete MyFrame.java
+
+commit 4bd8ca1802260831356088c5555d525821467a60
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Nov 30 20:38:25 2017 -0700
+
+    Delete MyButtonListener.java
+
+commit 64f0c39074607cf3fdba8a65bc3fcbaecc999c76
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Thu Nov 30 20:38:11 2017 -0700
+
+    Delete loonie.gif
+
+commit 2ab931823daede17b18d47d2f250c5847eb7010b
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Nov 29 23:58:59 2017 -0700
+
+    Delete emptytextfile.txt
+
+commit 9264dc3fd8ac113e4e8a8d94576dd7f1983c737d
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Nov 29 23:57:59 2017 -0700
+
+    crimson for preston
+
+commit e3b1257ebe83e13119952b3845dad205b0115a7f
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Nov 29 23:15:55 2017 -0700
+
+    basic gui
+    
+    had some free time so i played around with swing to figure out how it works, this machine is badly made because i wasn't trying to make it well for now - it shows how you can respond to events like pressing buttons, i added general features like a text box for the display and an event that changes the display/title, you can probably implement contact with the vending machine software fairly easily. generally looking at this will give you a good idea of what the GUI is going to look like later on. Only 2 of the buttons and the loonie cause events for now. I hope the vending machine looks familiar to some of you.
+
+commit 7b14eb848de910f382879045f1ec2bb76854ee98
+Author: mattw191 <32685120+mattw191@users.noreply.github.com>
+Date:   Wed Nov 29 23:08:37 2017 -0700
+
+    making a new folder
+
+commit 6afacf74f956d176cf9d0e2796ecddd97bc193dd
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Nov 29 18:39:50 2017 -0700
+
+    Fixed small logic bug and added .class files to .gitignore again
+
+commit a8e0f4a574bb4a1071d55d82d5d7278f2c5f94a5
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Nov 29 18:35:10 2017 -0700
+
+    Updated hardware to 2.2 and added lock support
+
+commit c2bdfec2da8ff1c6648bc104fcad5108a570772e
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Wed Nov 29 17:44:20 2017 -0700
+
+    Partially implemented locking/unlocking
+    
+    Still need to register the listener somehow, will probably make a new class just for returning instance of lock so its listener can be registered.
+
+commit 1f20e21dc8b663879a78ab673c27882150cce2d2
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Nov 26 19:47:10 2017 -0700
+
+    Fixed some formatting for readability
+
+commit ed16da09487c5ba89949922139e9563f40ff7d06
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Nov 26 19:42:52 2017 -0700
+
+    Update README.md
+
+commit b6db0f7cfd9fa8a23ef0fa167c1d7632dc916ad6
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Nov 26 19:42:23 2017 -0700
+
+    Updated readme to reflect assignment requirements
+
+commit db43f9d50add7c3837b7ae78592d6296b78fbcb9
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Nov 26 19:27:41 2017 -0700
+
+    Uploaded Initial Files (From assignment 2)
+
+commit 31dad286df87eb92bfc9d293ee0ad8368224b25e
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Sun Nov 26 19:25:29 2017 -0700
+
+    Initial commit
