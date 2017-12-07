@@ -20,7 +20,7 @@ public class ConfigPanelLogic {
 	private TechJFrame techFrame;
 	
 	private boolean indexMode; //whether the technician is currently accessing the pop index as opposed to pop cost
-	private String input; //the input from the keypad
+	private String input = ""; //the input from the keypad
 	private String event; //the internal display message
 	
 	private int indexToModify;
@@ -116,6 +116,9 @@ public class ConfigPanelLogic {
 	public void pressCharButton(int btnIndex, char letter) {
 		vm.getConfigurationPanel().getButton(btnIndex).press();
 		input += letter; //Concatenates the char pressed to input
+		event = input;
+		System.out.println(input);
+		display(event);
 	}
 	
 	/**

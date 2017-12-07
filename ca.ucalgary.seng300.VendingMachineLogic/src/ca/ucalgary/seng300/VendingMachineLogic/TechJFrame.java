@@ -9,6 +9,7 @@
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -32,7 +33,6 @@ public class TechJFrame extends JFrame {
 	private ConfigPanelLogic cpl;
 	private boolean shifted = false;
 	//Keyboard has some memory to store text
-	private String alphaText = "";
 	private JTextPane textPane;
 	/**
 	 * Creates the frame.
@@ -61,16 +61,17 @@ public class TechJFrame extends JFrame {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
 		           if (e.getSource() instanceof JButton) {
-		                String text = e.getActionCommand();
+		                String text = e.getActionCommand().toUpperCase(); //Gets the letter in a lowercase string format
+		                char letter = e.getActionCommand().charAt(0); //then convert it to a char
+		                int btnIndex = ((int) letter) - 55; //then get the ascii value - 65 + 10
 		                //Do something with button
 		               if(shifted == false)text = text.toLowerCase();
-		               alphaText += text;
+		               cpl.pressCharButton(btnIndex, text.charAt(0)); //Call the logic side of things to handle the button being pressed
 		            }
 		        }
 		    };
 		    
 		    //26 Buttons
-		    //TODO determine why the JButtons aren't acting like they should
 		    JButton[] alpha = new JButton[26];
 		    
 		    for (int i = 0; i < alpha.length; i++) {
@@ -81,12 +82,14 @@ public class TechJFrame extends JFrame {
 		    }
 		
 	     JButton shift = new JButton("SHIFT");
+	     shift.setFont(shift.getFont().deriveFont(8.0f));
 	     shift.setSize(shift.getPreferredSize());
 	     shift.setMargin(new Insets(0,0,0,0));
 	     shift.addActionListener(new ActionListener() {
 	     	public void actionPerformed(ActionEvent arg0) {
 	     		//default is not shifted - take logic negation when pressed
 	     		shifted = !shifted;
+	     		vm.getConfigurationPanel().getButton(36); //shift button is button 36
 	     	}
 	     });
 	     
@@ -188,7 +191,6 @@ public class TechJFrame extends JFrame {
 				textPane.setText(cpl.getDisplayMessage());
 				//Reset keyboard values
 				shifted = false;
-				alphaText = "";
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
