@@ -8,6 +8,7 @@ import org.lsmr.vending.hardware.*;
 
 import ca.ucalgary.seng300.VendingMachineLogic.VendingMachineLogic;
 import javafx.scene.control.Button;
+import ca.ucalgary.seng300.VendingMachineLogic.ConfigPanelLogic;
 
 import org.lsmr.vending.*;
 
