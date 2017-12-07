@@ -130,7 +130,12 @@ public class EventListener implements ActionListener
 				machine.getCoinRack(i).unload();	//load 4 of every kind of coin to start with
 			}
 			break;
+				
+		case "configPanel":
+			ConfigPanelLogic.initialize();
 			
+			break;
+	
 		case "loonie":
 			try {
 				// Inserts a loonie into the vending machine
