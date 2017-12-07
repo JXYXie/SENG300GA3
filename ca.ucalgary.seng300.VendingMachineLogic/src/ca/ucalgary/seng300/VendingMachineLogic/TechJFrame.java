@@ -9,9 +9,9 @@
 package ca.ucalgary.seng300.VendingMachineLogic;
 
 import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.AbstractAction;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -29,8 +29,10 @@ public class TechJFrame extends JFrame {
 
 	private JPanel contentPane;
 	private ConfigPanelLogic cpl;
+	private boolean shifted = false;
+	//Keyboard has some memory to store text
+	private String alphaText = "";
 	private JTextPane textPane;
-
 	/**
 	 * Creates the frame.
 	 */
@@ -49,6 +51,44 @@ public class TechJFrame extends JFrame {
 		textPane.setText("Pop index to modify:"); //Default display message
 		this.setTitle("Configuration Panel");
 		
+		//Panel just for alpha characters
+		JPanel panel = new JPanel(new GridLayout(3,9));
+		
+		//Listeners for buttons
+
+		ActionListener listener = new ActionListener() {
+		      @Override
+		      public void actionPerformed(ActionEvent e) {
+		           if (e.getSource() instanceof JButton) {
+		                String text = e.getActionCommand();
+		                //Do something with button
+		               if(shifted == false)text = text.toLowerCase();
+		               alphaText += text;
+		            }
+		        }
+		    };
+		    
+		    //26 Buttons
+		    //TODO determine why the JButtons aren't acting like they should
+		    JButton[] alpha = new JButton[26];
+		    
+		    for (int i = 0; i < alpha.length; i++) {
+		        alpha[i] = new JButton(Character.toString((char) (65+i))); //A = 65, B = 66...
+		        alpha[i].addActionListener(listener);
+		        panel.add(alpha[i]);
+		    }
+		
+	     JButton shift = new JButton("SHIFT");
+	     shift.addActionListener(new ActionListener() {
+	     	public void actionPerformed(ActionEvent arg0) {
+	     		//default is not shifted - take logic negation when pressed
+	     		shifted = !shifted;
+	     	}
+	     });
+	     
+	     //Add shift button to panel
+	     panel.add(shift);
+
 		JButton keypad_9 = new JButton("9");
 		keypad_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -141,7 +181,10 @@ public class TechJFrame extends JFrame {
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.reset();
-				textPane.setText(cpl.getDisplayMessage());
+				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				//Reset keyboard values
+				shifted = false;
+				alphaText = "";
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -150,63 +193,65 @@ public class TechJFrame extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(99)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(keypad_1)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_2)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_3))
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(keypad_4)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_5)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_6))
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(keypad_7)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_8)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(keypad_9))
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(keypad_0, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnEnter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGap(2))))));
+						.addComponent(txtpnPleaseSelectPop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(keypad_1)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(keypad_2)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(keypad_3))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(keypad_4)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(keypad_5)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(keypad_6))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(keypad_7)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(keypad_8)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(keypad_9))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(keypad_0, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnEnter, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+					.addGap(18)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE))
+		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(83)
-					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(73)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(keypad_9)
-						.addComponent(keypad_8)
-						.addComponent(keypad_7))
+					.addComponent(txtpnPleaseSelectPop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(keypad_6)
-						.addComponent(keypad_5)
-						.addComponent(keypad_4))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(keypad_3)
-						.addComponent(keypad_2)
-						.addComponent(keypad_1))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(keypad_0)
-						.addComponent(btnEnter)
-						.addComponent(btnReset))
-					.addContainerGap(111, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(keypad_9)
+								.addComponent(keypad_8)
+								.addComponent(keypad_7))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(keypad_6)
+								.addComponent(keypad_5)
+								.addComponent(keypad_4))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(keypad_3)
+								.addComponent(keypad_2)
+								.addComponent(keypad_1))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(keypad_0)
+								.addComponent(btnEnter)
+								.addComponent(btnReset))))
+					.addContainerGap(212, Short.MAX_VALUE))
 		);
-		gl_contentPane.linkSize(SwingConstants.HORIZONTAL, new Component[] {keypad_9, keypad_8, keypad_7, keypad_6, keypad_5, keypad_4, keypad_3, keypad_2, keypad_1, keypad_0, btnReset, btnEnter});
+		gl_contentPane.linkSize(SwingConstants.HORIZONTAL, new Component[] {keypad_9, keypad_8, keypad_7, keypad_6, keypad_5, keypad_4, keypad_3, keypad_2, keypad_1, keypad_0, btnEnter, btnReset});
 		contentPane.setLayout(gl_contentPane);
 	}
 
