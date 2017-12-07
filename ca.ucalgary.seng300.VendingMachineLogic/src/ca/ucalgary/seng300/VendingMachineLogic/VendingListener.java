@@ -8,6 +8,7 @@
  **********************************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import org.lsmr.vending.Coin;
 import org.lsmr.vending.PopCan;
@@ -19,6 +20,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	private VendingMachineLogic vml;
 	private VendingMachine vm;
 	
+	private NumberFormat formatter = NumberFormat.getCurrencyInstance();
 	private String event;
 	
 	/**
@@ -45,7 +47,9 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 		vml.addCredit(coin.getValue()); //Increment the credit when valid coins are inserted
 		event = ("Inserted a " + vml.getCurrency() + coin.getValue() + " cent coin"); //Updates event for coin insertion
 		vml.log(event); //Now logs that event
-		event = "Credit: " + vml.getCredit(); //Updates event for the display
+		
+		double centValue = ((double)vml.getCredit() / 100); //Calculates the value of the coin in cent
+		event = "Credit: " + vml.getCurrency() + formatter.format(centValue); //Updates event for the display
 		vml.display(event); //Displays the current credit for and logs it to file
 	}
 	//Rejects an invalid coin
@@ -96,10 +100,14 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	}
 
 	@Override
-	public void coinsLoaded(CoinRack rack, Coin... coins) {}
+	public void coinsLoaded(CoinRack rack, Coin... coins) {
+		vml.notifyCoinsLoadedGUI();
+	}
 
 	@Override
-	public void coinsUnloaded(CoinRack rack, Coin... coins) {}
+	public void coinsUnloaded(CoinRack rack, Coin... coins) {
+		vml.notifyCoinsUnloadedGUI();
+	}
 	/***********************************End CoinRack Listener**************************************/
 	
 	
@@ -140,6 +148,7 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void coinsDelivered(CoinReturn coinReturn, Coin[] coins) {
 		event = Arrays.toString(coins) + " cent coin is returned";
 		vml.log(event);
+		vml.notifyCoinsReturned(coins);
 	}
 
 	@Override
@@ -281,9 +290,11 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void activated(IndicatorLight light) {
 		if (light == vm.getExactChangeLight()) {
 			event = "Exact change only light turned on";
+			vml.updateExactChangeLight(true);
 		}
 		else if (light == vm.getOutOfOrderLight()) {
 			event = "Out of order light turned on";
+			vml.updateOutOfOrderLight(true);
 		}
 		vml.log(event);
 	}
@@ -292,9 +303,11 @@ PushButtonListener, PopCanRackListener, DeliveryChuteListener, IndicatorLightLis
 	public void deactivated(IndicatorLight light) {
 		if (light == vm.getExactChangeLight()) {
 			event = "Exact change only light turned off";
+			vml.updateExactChangeLight(false);
 		}
 		else if (light == vm.getOutOfOrderLight()) {
 			event = "Out of order light turned off";
+			vml.updateOutOfOrderLight(false);
 		}
 		vml.log(event);		
 	}

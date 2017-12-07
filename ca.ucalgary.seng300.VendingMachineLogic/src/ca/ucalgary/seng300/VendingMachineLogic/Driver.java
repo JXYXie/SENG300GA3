@@ -69,22 +69,71 @@ public class Driver
         class MyGUIListener implements GUIListener {
         	/**
         	 * Method used to change the display of the GUI to match the vending machine logic
+        	 * @param message is the message to display in the vending GUI display
         	 */
         	@Override
         	public void updateDisplay(String message) {
         		aFrame.setMessage(message);
         	}
         	
-        	// Method that will be used to check what pop was vended
+        	/**
+        	 * Method used to show what pop was vended by the machine
+        	 * @param popName is the pop that was vended by the machine
+        	 */
 			@Override
 			public void popVended(String popName) {
 				aFrame.vendedPop(popName);
 			}
 
+        	/**
+        	 * Method used to update the coins in the vending machine
+        	 * @param vm is the vending machine the GUI is representing
+        	 */
 			@Override
 			public void updateCoins(VendingMachine vm) {
 				aFrame.setCoinCount(vm);
-				
+			}
+
+        	/**
+        	 * Method used to update the exact change light for the vending machine
+        	 * @param set is a boolean value used to change the visibility of the light in the GUI
+        	 */
+			@Override
+			public void updateExactChangeLight(boolean set) {
+				aFrame.setExactChangeLight(set);
+			}
+
+        	/**
+        	 * Method used to update the out of order light for the vending machine
+        	 * @param set is a boolean value used to change the visibility of the light in the GUI
+        	 */
+			@Override
+			public void updateOutOfOrderLight(boolean set) {
+				aFrame.setOutOfOrderLight(set);
+			}
+
+			/**
+			 * Method used to unload coins from vending machine
+			 */
+			@Override
+			public void coinsUnloaded() {
+				aFrame.setCoinCount(machine);
+			}
+
+			/**
+			 * Method used to load coins in vending machine
+			 */
+			@Override
+			public void coinsLoaded() {
+				aFrame.setCoinCount(machine);
+			}
+
+			/**
+			 * Method used to show returned coins in vending machine
+			 */
+			@Override
+			public void coinsReturned(Coin[] coins) {
+				aFrame.setCoinsReturnedCount(coins);
 			}
 
         	

@@ -32,8 +32,7 @@ public class TechJFrame extends JFrame {
 	private boolean shifted = false;
 	//Keyboard has some memory to store text
 	private String alphaText = "";
-	
-
+	private JTextPane textPane;
 	/**
 	 * Creates the frame.
 	 */
@@ -47,8 +46,10 @@ public class TechJFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JTextPane txtpnPleaseSelectPop = new JTextPane(); //Instantiates the textpane
-		txtpnPleaseSelectPop.setEditable(false);
+		textPane = new JTextPane(); //Instantiates the textpane
+		textPane.setEditable(false);
+		textPane.setText("Pop index to modify:"); //Default display message
+		this.setTitle("Configuration Panel");
 		
 		//Panel just for alpha characters
 		JPanel panel = new JPanel(new GridLayout(3,9));
@@ -92,7 +93,7 @@ public class TechJFrame extends JFrame {
 		keypad_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(9);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -100,7 +101,7 @@ public class TechJFrame extends JFrame {
 		keypad_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(8);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -108,7 +109,7 @@ public class TechJFrame extends JFrame {
 		keypad_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(7);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -116,7 +117,7 @@ public class TechJFrame extends JFrame {
 		keypad_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(6);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -124,7 +125,7 @@ public class TechJFrame extends JFrame {
 		keypad_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(5);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -132,7 +133,7 @@ public class TechJFrame extends JFrame {
 		keypad_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(4);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -140,7 +141,7 @@ public class TechJFrame extends JFrame {
 		keypad_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(3);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -148,7 +149,7 @@ public class TechJFrame extends JFrame {
 		keypad_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(2);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -156,7 +157,7 @@ public class TechJFrame extends JFrame {
 		keypad_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressButton(1);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -164,7 +165,7 @@ public class TechJFrame extends JFrame {
 		keypad_0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cpl.pressButton(0);
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -172,7 +173,7 @@ public class TechJFrame extends JFrame {
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpl.pressEnterButton();
-				txtpnPleaseSelectPop.setText(cpl.getDisplayMessage());
+				textPane.setText(cpl.getDisplayMessage());
 			}
 		});
 		
@@ -184,18 +185,8 @@ public class TechJFrame extends JFrame {
 				//Reset keyboard values
 				shifted = false;
 				alphaText = "";
-				
 			}
 		});
-		
-
-
-	     
-	     
-		
-		
-		
-		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

@@ -19,6 +19,9 @@ public class EventListener implements ActionListener
     private MyFrame aFrame;
 	private VendingMachine machine;
 	private JTextField vendedPop;
+	private JTextField[] coinsReturned;
+	private JButton lock, unlock, loadCoins, loadPops, emptyCoins;
+	private int[] numberOfCoins;
 	
 	// Instantiates the coins used for inserting into the vending machine when clicked by the GUI
 	Coin toonie = new Coin(200);
@@ -26,13 +29,24 @@ public class EventListener implements ActionListener
 	Coin quarter = new Coin(25);
 	Coin dime = new Coin(10);
 	Coin nickel = new Coin(5);
+	Coin dummy = new Coin(42);
 
     //the frame and text spaces which need to pass information to the listener
-    public EventListener(MyFrame myFrame,JTextField textField, JTextField vendedPop, VendingMachine vm)
+    public EventListener(MyFrame myFrame,JTextField textField, JTextField vendedPop, VendingMachine vm, JTextField[] coinsReturned, int[] numberOfCoins)
     {
     	aFrame = myFrame;
 		machine = vm;
 		this.vendedPop = vendedPop;
+		this.coinsReturned = coinsReturned;
+		this.numberOfCoins = numberOfCoins;
+    }
+    
+    public void addLockUnlock(JButton lock, JButton unlock, JButton loadCoins, JButton loadPops, JButton emptyCoins) {
+    	this.lock = lock;
+    	this.unlock = unlock;
+    	this.loadCoins = loadCoins;
+    	this.loadPops = loadPops;
+    	this.emptyCoins = emptyCoins;
     }
 
     //defines what the buttons do, try and catch for error handling/ required for code to compile
@@ -43,7 +57,6 @@ public class EventListener implements ActionListener
 	switch(frameEvent){
 		case "Button0":
 			machine.getSelectionButton(0).press();
-			// aFrame.setShow(true);
 			aFrame.setTitle("button 0 was pressed");
 			break;			
 		case "Button1":
@@ -69,33 +82,54 @@ public class EventListener implements ActionListener
 			
 		case "Vended":
 			vendedPop.setText("None");
+			for(int i = 0; i < coinsReturned.length; i++) {
+				numberOfCoins[i] = 0;
+				coinsReturned[i].setText("Empty");
+			}
+			machine.getCoinReturn().unload();
 			break;
 			
-		// Currently working on making vended cans display	
+		case "Lock":
+			unlock.setVisible(true);
+			loadCoins.setVisible(true);
+			loadPops.setVisible(true);
+			emptyCoins.setVisible(true);
+			lock.setVisible(false);
+			machine.enableSafety();
+			break;
 			
-//		case "Vended0":
-//			aFrame.deactivateButton(0);
-//			break;
-//			
-//		case "Vended1":
-//			aFrame.deactivateButton(1);
-//			break;
-//			
-//		case "Vended2":
-//			aFrame.deactivateButton(2);
-//			break;
-//			
-//		case "Vended3":
-//			aFrame.deactivateButton(3);
-//			break;
-//			
-//		case "Vended4":
-//			aFrame.deactivateButton(4);
-//			break;
-//			
-//		case "Vended5":
-//			aFrame.deactivateButton(5);
-//			break;
+		case "Unlock":
+			unlock.setVisible(false);
+			loadCoins.setVisible(false);
+			loadPops.setVisible(false);
+			emptyCoins.setVisible(false);
+			lock.setVisible(true);
+			machine.disableSafety();
+			break;
+			
+		case "LoadCoins":
+			for(int i = 0; i < machine.getNumberOfCoinRacks(); i++) {
+				Coin value;
+				if (i == 0) 
+					value = new Coin(5);
+				else if (i == 1)
+					value = new Coin(10);
+				else if (i == 2)
+					value = new Coin(25);
+				else if (i == 3)
+					value = new Coin(100);
+				else
+					value = new Coin(200);
+				machine.getCoinRack(i).load(value, value, value, value);	//load 4 of every kind of coin to start with
+			}
+			machine.getExactChangeLight().deactivate();
+			break;
+			
+		case "EmptyCoins":
+			for(int i = 0; i < machine.getNumberOfCoinRacks(); i++) {
+				machine.getCoinRack(i).unload();	//load 4 of every kind of coin to start with
+			}
+			break;
 			
 		case "loonie":
 			try {
@@ -139,7 +173,12 @@ public class EventListener implements ActionListener
 			}
 			break;
 		case "washer":
-			//textField.setText(frameEvent + " was pressed");
+			try {
+				//textField.setText(frameEvent + " was pressed");
+				machine.getCoinSlot().addCoin(dummy);
+			} catch (DisabledException d) {
+				
+			}
 			break;
 		}
     }

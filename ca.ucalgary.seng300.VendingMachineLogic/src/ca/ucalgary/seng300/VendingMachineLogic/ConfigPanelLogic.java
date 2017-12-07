@@ -6,6 +6,7 @@
  *******************************************/
 package ca.ucalgary.seng300.VendingMachineLogic;
 
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,6 +25,8 @@ public class ConfigPanelLogic {
 	
 	private int indexToModify;
 	private int costToModify;
+	
+	private NumberFormat formatter = NumberFormat.getCurrencyInstance();
 	
 	/**
 	 * Constructor
@@ -80,10 +83,11 @@ public class ConfigPanelLogic {
 			if (input != "") { //and the input is not empty
 				costToModify = Integer.parseInt(input);
 			} else { //if input is empty then
-				costToModify = 100; //the new cost will default to 100 cents
+				costToModify = 200; //the new cost will default to 200 cents
 			}
 			changeCost(indexToModify, costToModify); //Updates the corresponding pop rack with the new cost
-			reset(); //Now ask for pop index again
+			indexMode = true; //Now it is back to index mode
+			input = ""; //resets the input
 		}
 	}
 	
@@ -106,6 +110,15 @@ public class ConfigPanelLogic {
 	}
 	
 	/**
+	 * Any char button (a-z) is pressed
+	 * @param btnIndex of the button that was pressed
+	 */
+	public void pressCharButton(int btnIndex, char letter) {
+		vm.getConfigurationPanel().getButton(btnIndex).press();
+		input += letter; //Concatenates the char pressed to input
+	}
+	
+	/**
 	 * @param index of the pop rack to be edited
 	 * @param newCost of the pop
 	 */
@@ -114,6 +127,10 @@ public class ConfigPanelLogic {
 		costs.set(index, newCost); //change the cost of the pop that was edited
 		vml.setCosts(costs); //updates the new costs arrayList
 		vm.configure(vml.getPopNames(), costs); //and configure the machine with the new costs
+		
+		double centCost = ((double)newCost / 100);
+		event = ("New cost of " + vm.getPopKindName(index) + " is now " + formatter.format(centCost)); //Get the new cost
+		display(event);
 	}
 	
 	/**
