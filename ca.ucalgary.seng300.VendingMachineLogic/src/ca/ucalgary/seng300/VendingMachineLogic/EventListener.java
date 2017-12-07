@@ -26,6 +26,7 @@ public class EventListener implements ActionListener
 	Coin quarter = new Coin(25);
 	Coin dime = new Coin(10);
 	Coin nickel = new Coin(5);
+	Coin dummy = new Coin(42);
 
     //the frame and text spaces which need to pass information to the listener
     public EventListener(MyFrame myFrame,JTextField textField, JTextField vendedPop, VendingMachine vm)
@@ -113,7 +114,12 @@ public class EventListener implements ActionListener
 			}
 			break;
 		case "washer":
-			//textField.setText(frameEvent + " was pressed");
+			try {
+				//textField.setText(frameEvent + " was pressed");
+				machine.getCoinSlot().addCoin(dummy);
+			} catch (DisabledException d) {
+				
+			}
 			break;
 		}
     }
