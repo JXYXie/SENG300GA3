@@ -6,9 +6,8 @@ import java.awt.Component;
 import java.awt.event.*;
 import org.lsmr.vending.hardware.*;
 
-import ca.ucalgary.seng300.VendingMachineLogic.VendingMachineLogic;
+import ca.ucalgary.seng300.VendingMachineLogic.*;
 import javafx.scene.control.Button;
-import ca.ucalgary.seng300.VendingMachineLogic.ConfigPanelLogic;
 
 import org.lsmr.vending.*;
 
@@ -23,6 +22,7 @@ public class EventListener implements ActionListener
 	private JTextField[] coinsReturned;
 	private JButton lock, unlock, loadCoins, loadPops, emptyCoins, configPanel;
 	private int[] numberOfCoins;
+	private TechJFrame configGUI;
 	
 	// Instantiates the coins used for inserting into the vending machine when clicked by the GUI
 	Coin toonie = new Coin(200);
@@ -42,13 +42,14 @@ public class EventListener implements ActionListener
 		this.numberOfCoins = numberOfCoins;
     }
     
-    public void addLockUnlock(JButton lock, JButton unlock, JButton loadCoins, JButton loadPops, JButton emptyCoins, JButton configPanel) {
+    public void addLockUnlock(JButton lock, JButton unlock, JButton loadCoins, JButton loadPops, JButton emptyCoins, JButton configPanel, TechJFrame configGUI) {
     	this.lock = lock;
     	this.unlock = unlock;
     	this.loadCoins = loadCoins;
     	this.loadPops = loadPops;
     	this.emptyCoins = emptyCoins;
-	this.configPanel = configPanel;
+    	this.configPanel = configPanel;
+    	this.configGUI = configGUI;
     }
 
     //defines what the buttons do, try and catch for error handling/ required for code to compile
@@ -97,6 +98,7 @@ public class EventListener implements ActionListener
 			loadPops.setVisible(true);
 			emptyCoins.setVisible(true);
 			lock.setVisible(false);
+			configGUI.setVisible(true);
 			machine.enableSafety();
 			break;
 			
@@ -106,6 +108,7 @@ public class EventListener implements ActionListener
 			loadPops.setVisible(false);
 			emptyCoins.setVisible(false);
 			lock.setVisible(true);
+			configGUI.setVisible(false);
 			machine.disableSafety();
 			break;
 			
@@ -131,11 +134,6 @@ public class EventListener implements ActionListener
 			for(int i = 0; i < machine.getNumberOfCoinRacks(); i++) {
 				machine.getCoinRack(i).unload();	//load 4 of every kind of coin to start with
 			}
-			break;
-				
-		case "configPanel":
-			ConfigPanelLogic.initialize();
-			
 			break;
 	
 		case "loonie":
