@@ -75,7 +75,7 @@ public class MyFrame extends JFrame {
 		// A button to clear the coinReturn chute and also reset the display for
 		// the next pop
 		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
-		vendedButton = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		vendedButton = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popreturnbutton.gif"))));
 		vendedButton.setActionCommand("Vended");
 		vendedButton.addActionListener(aListener);
 		size = vendedButton.getPreferredSize();
@@ -86,7 +86,7 @@ public class MyFrame extends JFrame {
 
 		// A button to lock the vending machine and enable safety for the technician
 		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
-		lock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		lock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("lock.gif"))));
 		lock.setActionCommand("Lock");
 		lock.addActionListener(aListener);
 		size = lock.getPreferredSize();
@@ -97,7 +97,7 @@ public class MyFrame extends JFrame {
 		
 		// A button to unlock the vending machine and disable the safety when the technician is done
 		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
-		unlock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		unlock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("unlock.gif"))));
 		unlock.setActionCommand("Unlock");
 		unlock.addActionListener(aListener);
 		size = unlock.getPreferredSize();
@@ -109,7 +109,7 @@ public class MyFrame extends JFrame {
 		
 		// A method to load coins into the vending machine
 		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
-		loadCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		loadCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("coinpile.gif"))));
 		loadCoins.setActionCommand("LoadCoins");
 		loadCoins.addActionListener(aListener);
 		size = loadCoins.getPreferredSize();
@@ -121,7 +121,7 @@ public class MyFrame extends JFrame {
 		
 		// A method to load pops into the vending machine
 		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
-		loadPops = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		loadPops = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popcanpile.gif"))));
 		loadPops.setActionCommand("LoadPops");
 		loadPops.addActionListener(aListener);
 		size = loadPops.getPreferredSize();
@@ -133,7 +133,7 @@ public class MyFrame extends JFrame {
 		
 		// A method to unload the coin racks from the vending machine
 		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
-		emptyCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popbutton.gif"))));
+		emptyCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("unloadracks.gif"))));
 		emptyCoins.setActionCommand("EmptyCoins");
 		emptyCoins.addActionListener(aListener);
 		size = emptyCoins.getPreferredSize();
