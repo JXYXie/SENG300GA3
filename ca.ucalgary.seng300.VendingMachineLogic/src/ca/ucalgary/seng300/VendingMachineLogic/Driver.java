@@ -63,7 +63,7 @@ public class Driver
 		}
     		
         MyFrame aFrame = new MyFrame();
-        aFrame.makeframe(machine);	// Passes the machine and machine logic to the frame for later use
+        aFrame.makeframe(machine, machineLogic);	// Passes the machine and machine logic to the frame for later use
         
         // Creates a listener that will update the display of the GUI to match the display in the event log
         class MyGUIListener implements GUIListener {

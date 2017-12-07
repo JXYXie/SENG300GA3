@@ -20,6 +20,7 @@ public class MyFrame extends JFrame {
 	private JTextField textField, vendedPop;
 	private MyFrame aFrame;
 	private JLabel picture1, exactChangeLight, outOfOrderLight;
+	private TechJFrame configGUI;
 
 	private JLabel label1;
 	private JButton button, vendedButton, lock, unlock, loadCoins, loadPops, emptyCoins, configPanel;
@@ -31,10 +32,13 @@ public class MyFrame extends JFrame {
 	// makes a frame and instantiates/customizes all of its components/the
 	// listener, self explanitory from attribute names
 	// each grouping is separated for easier reading
-	public void makeframe(VendingMachine vm) throws IOException {
+	public void makeframe(VendingMachine vm, VendingMachineLogic vml) throws IOException {
 		aFrame = new MyFrame();
 		aFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		aFrame.setTitle("Clients Machine");
+		configGUI = new TechJFrame(vm, vml);
+		configGUI.setVisible(false);
+		configGUI.setLocation(aFrame.getSize().width + 1245, aFrame.getSize().height+517);
 
 		// display label, probably gonna remove this
 		label1 = new JLabel("Display");
@@ -74,7 +78,6 @@ public class MyFrame extends JFrame {
 
 		// A button to clear the coinReturn chute and also reset the display for
 		// the next pop
-		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
 		vendedButton = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popreturnbutton.gif"))));
 		vendedButton.setActionCommand("Vended");
 		vendedButton.addActionListener(aListener);
@@ -85,7 +88,6 @@ public class MyFrame extends JFrame {
 		aFrame.getContentPane().add(vendedButton);
 
 		// A button to lock the vending machine and enable safety for the technician
-		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
 		lock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("lock.gif"))));
 		lock.setActionCommand("Lock");
 		lock.addActionListener(aListener);
@@ -96,7 +98,6 @@ public class MyFrame extends JFrame {
 		aFrame.getContentPane().add(lock);
 		
 		// A button to unlock the vending machine and disable the safety when the technician is done
-		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
 		unlock = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("unlock.gif"))));
 		unlock.setActionCommand("Unlock");
 		unlock.addActionListener(aListener);
@@ -108,7 +109,6 @@ public class MyFrame extends JFrame {
 		aFrame.getContentPane().add(unlock);
 		
 		// A method to load coins into the vending machine
-		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
 		loadCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("coinpile.gif"))));
 		loadCoins.setActionCommand("LoadCoins");
 		loadCoins.addActionListener(aListener);
@@ -120,7 +120,6 @@ public class MyFrame extends JFrame {
 		aFrame.getContentPane().add(loadCoins);
 		
 		// A method to load pops into the vending machine
-		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
 		loadPops = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("popcanpile.gif"))));
 		loadPops.setActionCommand("LoadPops");
 		loadPops.addActionListener(aListener);
@@ -132,7 +131,6 @@ public class MyFrame extends JFrame {
 		aFrame.getContentPane().add(loadPops);
 		
 		// A method to unload the coin racks from the vending machine
-		/****************************************MATT MAKE THE BUTTON PRETTY*********************************************/
 		emptyCoins = new JButton(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("unloadracks.gif"))));
 		emptyCoins.setActionCommand("EmptyCoins");
 		emptyCoins.addActionListener(aListener);
@@ -152,11 +150,11 @@ public class MyFrame extends JFrame {
 		configPanel.setBounds(1050, 500, size.width, size.height);
 		configPanel.setBorder(BorderFactory.createEmptyBorder());
 		configPanel.setContentAreaFilled(false);
-		emptyCoins.setVisible(false);
+		configPanel.setVisible(false);
 		aFrame.getContentPane().add(configPanel);
 
 		
-		aListener.addLockUnlock(lock, unlock, loadCoins, loadPops, emptyCoins, configPanel);
+		aListener.addLockUnlock(lock, unlock, loadCoins, loadPops, emptyCoins, configPanel, configGUI);
 
 		// buttons corresponding to pop cans
 		int i;
