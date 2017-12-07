@@ -21,7 +21,7 @@ public class EventListener implements ActionListener
 	private VendingMachine machine;
 	private JTextField vendedPop;
 	private JTextField[] coinsReturned;
-	private JButton lock, unlock, loadCoins, loadPops, emptyCoins;
+	private JButton lock, unlock, loadCoins, loadPops, emptyCoins, configPanel;
 	private int[] numberOfCoins;
 	
 	// Instantiates the coins used for inserting into the vending machine when clicked by the GUI
@@ -42,12 +42,13 @@ public class EventListener implements ActionListener
 		this.numberOfCoins = numberOfCoins;
     }
     
-    public void addLockUnlock(JButton lock, JButton unlock, JButton loadCoins, JButton loadPops, JButton emptyCoins) {
+    public void addLockUnlock(JButton lock, JButton unlock, JButton loadCoins, JButton loadPops, JButton emptyCoins, JButton configPanel) {
     	this.lock = lock;
     	this.unlock = unlock;
     	this.loadCoins = loadCoins;
     	this.loadPops = loadPops;
     	this.emptyCoins = emptyCoins;
+	this.configPanel = configPanel;
     }
 
     //defines what the buttons do, try and catch for error handling/ required for code to compile
