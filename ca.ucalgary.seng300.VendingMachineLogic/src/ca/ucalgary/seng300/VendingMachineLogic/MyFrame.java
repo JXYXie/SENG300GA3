@@ -212,8 +212,7 @@ public class MyFrame extends JFrame {
 		// the vending machine image
 		picture1 = new JLabel();
 		picture1.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("candycane.gif"))));
-		picture1.setBounds(0, 0, 1200, 870);
-		picture1.setPreferredSize(new Dimension(1200, 870));
+		picture1.setPreferredSize(new Dimension(1250, 870));
 
 		// dont add anything after this picture, it determines the size because
 		// of "pack" being used
