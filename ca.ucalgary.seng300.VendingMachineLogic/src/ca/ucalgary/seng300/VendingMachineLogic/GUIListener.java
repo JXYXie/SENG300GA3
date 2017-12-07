@@ -1,5 +1,6 @@
 package ca.ucalgary.seng300.VendingMachineLogic;
 
+import org.lsmr.vending.Coin;
 import org.lsmr.vending.hardware.VendingMachine;
 
 /**
@@ -36,4 +37,20 @@ public interface GUIListener {
 	 * @param set is the boolean value to set the visibility of the light in the GUI
 	 */
 	public void updateOutOfOrderLight(boolean set);
+	
+	/**
+	 * A method to unload the coins from the vending machine in the GUI
+	 */
+	public void coinsUnloaded();
+	
+	/**
+	 * A method to load the coins in the vending machine in the GUI
+	 */
+	public void coinsLoaded();
+	
+	/**
+	 * A method to get the coins returned to the GUI
+	 * @param coin is the array of coins returned to the GUI
+	 */
+	public void coinsReturned(Coin[] coin);
 }
