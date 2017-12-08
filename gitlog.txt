@@ -1,3 +1,46 @@
+commit 51cd17706499f9316199c607b58de9308ad3908c
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Dec 7 17:06:56 2017 -0700
+
+    Added the ability to properly test the config panel gui in the test suite, the test now ends only when the tested GUI is closed
+
+commit 81d6ade18c2be39505554354c1273d5d51232a23
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Dec 7 16:26:17 2017 -0700
+
+    Added our names and some missing final documentations
+
+commit 3b3e41f4555b195341ab610c506e7f4b93b6f404
+Merge: 7c0cd14 dd15ec9
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Dec 7 15:46:20 2017 -0700
+
+    Merge pull request from test branch to master
+    
+    updated/added tests
+
+commit 7c0cd14aa771d69467d648e599f3774e2b3fca12
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Dec 7 15:15:12 2017 -0700
+
+    Fixed many bugs with the character buttons as well as shift button and fully incorporated them into the logic
+    
+    - Made sure to set input to "" rather than null in ConfigPanelLogic.java
+    - Used proper ASCII index to calculate button index when char buttons are pressed
+    - Made the shift button font smaller
+
+commit dd15ec949977f00eb5364a3fdc4ea81f3580065e
+Author: sarafrancium <32684939+sarafrancium@users.noreply.github.com>
+Date:   Thu Dec 7 14:31:28 2017 -0700
+
+    updated/added tests
+
+commit 3bf27fff46251256c16bbf96f492589452dae338
+Author: Jack Xie <jacktuffx@gmail.com>
+Date:   Thu Dec 7 11:40:39 2017 -0700
+
+    Added git history log via git bash
+
 commit a02aac099856d76b797f07e7a41aeb56c93fafa5
 Author: Jack Xie <jacktuffx@gmail.com>
 Date:   Thu Dec 7 01:18:58 2017 -0700
