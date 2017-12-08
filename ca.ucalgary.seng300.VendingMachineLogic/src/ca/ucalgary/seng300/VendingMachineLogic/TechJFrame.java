@@ -41,7 +41,6 @@ public class TechJFrame extends JFrame {
 		
 		cpl = vml.getConfigPanelLogic();
 		
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); commented out so it doesn't close the VendingGUI
 		setBounds(100, 100, 750, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -156,4 +156,13 @@ public class ConfigPanelLogic {
 		return event;
 	}
 	
+	/**
+	 * Gets the current TechJFrame (config panel Jframe)
+	 * @return techFrame
+	 */
+	public TechJFrame getTechFrame() {
+		return techFrame;
+	}
+	
+	
 }

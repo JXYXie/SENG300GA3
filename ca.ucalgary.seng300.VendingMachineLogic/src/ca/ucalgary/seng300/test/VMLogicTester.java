@@ -1,25 +1,29 @@
 package ca.ucalgary.seng300.test;
 
+/************************************************
+ * Test suite that tests the logic of the vending machine
+ */
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
 import ca.ucalgary.seng300.VendingMachineLogic.*;
 import org.lsmr.vending.Coin;
-import org.lsmr.vending.PopCan;
 import org.lsmr.vending.hardware.*;
-
-import org.junit.Test;
 
 public class VMLogicTester {
 	private VendingMachine vm;
 	private VendingMachineLogic vml;
-	private ConfigPanelLogic cpl;
+	private static ConfigPanelLogic cpl;
 	@Before
 	public void setUp() throws Exception {
 		
@@ -72,11 +76,19 @@ public class VMLogicTester {
 		}
 	}
 	
-	@After
-	public void tearDown() throws InterruptedException {
-	    while (true) { Thread.sleep(2000); }
-	}
-	
+	/**
+	 * Checks to see if the config panel gui is closed
+	 * If it is still open loop infinitely
+	 * @throws Exception
+	 */
+	@AfterClass
+	public static void tearDown() throws Exception {
+		TechJFrame techFrame = cpl.getTechFrame();
+		techFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		while (techFrame.isDisplayable()) { 
+			Thread.sleep(1000); 
+			}
+    }
 	
 	//Purchase normally
 	//This test makes sure that valid coins are accepted and added to the vending machine's credit, a pop
@@ -93,8 +105,6 @@ public class VMLogicTester {
 		
 		assertEquals(vm.getPopCanRack(1).size(), 4);
 		assertTrue(vm.getCoinReturn().size() == 3); //should be 3 coins(loonie and 3 quarters)
-		cpl.initialize();
-		cpl.reset();
 	}
 	
 	//Invalid coin insertion
@@ -222,5 +232,12 @@ public class VMLogicTester {
 			assertEquals(vm.getCoinReturn().size(), 8);
 		}
 	}
- 
+	
+	//Tests the configuration panel logic
+	//Testing is done through pressing buttons on the GUI and see if they work
+	@Test
+	public void test8() throws DisabledException {
+		cpl.initialize();
+		cpl.reset();
+	}
 }
